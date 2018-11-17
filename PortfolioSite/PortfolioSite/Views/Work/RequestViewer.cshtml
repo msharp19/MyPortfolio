@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "WorkItem";
+}
+<main role="main-inner-wrapper" class="container">
+    <div class="work-details">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <header role="work-title">
+                    <h2>Request Viewer</h2>
+                    <a href="https://requestviewer.azurewebsites.net/">Project URL<i class="fa fa-external-link" aria-hidden="true"></i></a>
+                    <a href="https://github.com/msharp19/RequestViewer">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </header>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8">
+                <section>
+                    <p>This is a simple website that allows someone to see thier request details - also serves JSON</p>
+                    <p>
+                        <strong>Details</strong><br />
+                        MVC C#
+                        .NET Framework 4.5.2
+                    </p>
+                </section>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="work-images grid">
+            <ul class="grid-lod effect-2" id="grid">
+                <li><img src="~/images/work-images/req-viewer.png" alt="" class="img-responsive" /></li>
+                <li><img src="~/images/request-view/bottom-page.png" alt="" class="img-responsive" /></li>
+                <li><img src="~/images/request-view/json.png" alt="" class="img-responsive" /></li>
+                <li><img src="~/images/request-view/vs-ctrl.png" alt="" class="img-responsive" /></li>
+            </ul>
+        </div>
+    </div>
+</main>
+@Styles.Render("~/Content/css/style.css")

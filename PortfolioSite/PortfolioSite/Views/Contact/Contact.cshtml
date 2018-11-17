@@ -1,0 +1,79 @@
+﻿@model PortfolioSite.Models.ContactModel
+@using CaptchaMvc.HtmlHelpers
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+@Scripts.Render("~/Scripts/js/jquery.min.js")
+<main role="main-inner-wrapper" class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+            <article role="pge-title-content" class="contact-header">
+                <header>
+                    <h2><span>Hi</span> Please feel free to message me - details below</h2>
+                </header>
+                <p><a href="tel:@Model.PhoneNumber"><i class="fa fa-phone" aria-hidden="true"></i> @Model.PhoneNumber (UK)</a><a href="mailto:@Model.Email"><i class="fa fa-envelope" aria-hidden="true"></i> @Model.Email</a></p>
+            </article>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="demo-wrapper">
+                <div id="surabaya"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="contat-from-wrapper">
+            <div id="message"></div>
+            <form class="email-form">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                        <input name="name" id="name-val" type="text" placeholder="Whats your name" value="@Model.FormName">
+                        <span id="name-val" class="validation-email">
+                            <i class="fa fa-check green" style="display:none;"></i>
+                            <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                        <input name="email" id="email-val" type="email" placeholder="Whats your email" value="@Model.FormEmail">
+                        <span id="email-val" class="validation-email">
+                            <i class="fa fa-check green" style="display:none;"></i>
+                            <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <textarea name="comments" id="comments" cols="" rows="" placeholder="Whats in your mind" value="@Model.FormMessage"></textarea>
+                    <span id="comments-val" class="validation-email">
+                        <i class="fa fa-check green" style="display:none;"></i>
+                        <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
+                    </span>
+                </div>
+                <div class="clearfix"></div>
+                <div class="button-panel">
+                    <div id="captcha-container">
+                        @Html.MathCaptcha()
+                    </div>
+                    <div class="button-container">
+                        <input id="send-email" name="" class="inline" type="button" value="Send Telegram">
+                        <span class="spinner"><img id="email-load" class="inline load-margin none" width="55" height="55" src="~/images/spinner.gif" alt="" /></span>
+                    </div>
+                </div>           
+                <div id="simple-msg"></div>
+            </form>
+        </div>
+    </div>
+</main>
+
+@Styles.Render("~/Content/toastr.css")
+
+@Scripts.Render("~/Scripts/js/custom.js")
+@Scripts.Render("~/Scripts/js/jquery.contact.js")
+@Scripts.Render("~/Scripts/js/maps.js")
+@Scripts.Render("~/Scripts/js/bootstrap.min.js")
+@Scripts.Render("~/Scripts/js/html5shiv.js")
+@Scripts.Render("~/Scripts/js/toastr.min.js")
+@Scripts.Render("~/Scripts/contact.js")
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=@(Model.GoogleMapsAPIKey)&callback=initMap">
+</script>

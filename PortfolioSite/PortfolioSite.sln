@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioSite", "PortfolioSite\PortfolioSite.csproj", "{B4BD52A2-0CDC-4620-BEEC-39B801B109F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramMessenger", "TelegramMessenger\TelegramMessenger.csproj", "{360D9A0F-06D8-479B-954E-E1CCC0D469D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4BD52A2-0CDC-4620-BEEC-39B801B109F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4BD52A2-0CDC-4620-BEEC-39B801B109F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4BD52A2-0CDC-4620-BEEC-39B801B109F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4BD52A2-0CDC-4620-BEEC-39B801B109F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360D9A0F-06D8-479B-954E-E1CCC0D469D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360D9A0F-06D8-479B-954E-E1CCC0D469D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360D9A0F-06D8-479B-954E-E1CCC0D469D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360D9A0F-06D8-479B-954E-E1CCC0D469D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
