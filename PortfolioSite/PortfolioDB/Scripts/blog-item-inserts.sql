@@ -10,13 +10,50 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-INSERT INTO [dbo].[BlogItem] ([Name], [TimeStamp], [Comments])
-VALUES('NeuralNetwork', GETDATE(), ''),
-('CNN', GETDATE(), ''),
-('OtherModelling', GETDATE(), ''),
-('Convolution', GETDATE(), ''),
-('TrackingImages', GETDATE(), ''),
-('CleaningImages', GETDATE(), '')
-SELECT [Id], [Name], [TimeStamp], [Comments]
-FROM [dbo].[BlogItem] tbl2
-WHERE NOT EXISTS (Select [Id], [Name] From [dbo].[BlogItem] tbl1 WHERE tbl1.Name = tbl2.Name)
+BEGIN
+   IF NOT EXISTS (SELECT * From [dbo].[BlogItem] where Name = 'NeuralNetwork')
+   BEGIN
+        INSERT INTO [dbo].[BlogItem] ([Name], [TimeStamp], [Comments])
+		VALUES('NeuralNetwork', GETDATE(), '');
+   END
+END
+
+BEGIN
+   IF NOT EXISTS (SELECT * From [dbo].[BlogItem] where Name = 'CNN')
+   BEGIN
+        INSERT INTO [dbo].[BlogItem] ([Name], [TimeStamp], [Comments])
+		VALUES ('CNN', GETDATE(), '');
+   END
+END
+
+BEGIN
+   IF NOT EXISTS (SELECT * From [dbo].[BlogItem] where Name = 'OtherModelling')
+   BEGIN
+        INSERT INTO [dbo].[BlogItem] ([Name], [TimeStamp], [Comments])
+		VALUES('OtherModelling', GETDATE(), '');
+   END
+END
+
+BEGIN
+   IF NOT EXISTS (SELECT * From [dbo].[BlogItem] where Name = 'Convolution')
+   BEGIN
+        INSERT INTO [dbo].[BlogItem] ([Name], [TimeStamp], [Comments])
+		VALUES ('Convolution', GETDATE(), '');
+   END
+END
+
+BEGIN
+   IF NOT EXISTS (SELECT * From [dbo].[BlogItem] where Name = 'TrackingImages')
+   BEGIN
+        INSERT INTO [dbo].[BlogItem] ([Name], [TimeStamp], [Comments])
+		VALUES ('TrackingImages', GETDATE(), '');
+   END
+END
+
+BEGIN
+   IF NOT EXISTS (SELECT * From [dbo].[BlogItem] where Name = 'CleaningImages')
+   BEGIN
+        INSERT INTO [dbo].[BlogItem] ([Name], [TimeStamp], [Comments])
+		VALUES ('CleaningImages', GETDATE(), '');
+   END
+END

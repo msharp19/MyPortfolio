@@ -18,4 +18,11 @@
             });
         }
     });
+
+    $(".effect-oscar").hover(
+        function() {
+            $(this).find(".post-date").fadeOut('slow');
+        }, function() {
+            $(this).find(".post-date").fadeIn('slow');
+        });
 });

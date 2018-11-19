@@ -928,10 +928,56 @@ article[role="pge-title-content"].contact-header {
      padding-top: 20px;
 }
 
+.comment-captcha{
+    display: inline-block;
+    margin-top: 20px;
+    padding-right: 25px;
+    width: 100%;
+    margin-left: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+}
+
 .bold{
     font-weight: 700;
 }
 
 .disabled-link{
     pointer-events: none;
+}
+
+.lock-size{
+    font-size: 13pt;
+}
+
+.url-exists{
+    text-align: center;
+    color: #FFF;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+    display: block;
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 7px;
+    z-index: 50;
+    width: 70px;
+    height: 70px;
+}
+
+.url-red{
+    background-color: #fb5353 !important;
+}
+
+.url-green{
+    background-color: #0dff00 !important;
+}
+
+.post-details{
+    margin-bottom: 10px;
 }

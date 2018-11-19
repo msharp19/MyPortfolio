@@ -8,6 +8,7 @@
     [Content] NVARCHAR(1000) NOT NULL, 
     [SubCommentCount] INT NOT NULL DEFAULT 0, 
     [ParentId] INT NULL, 
+    [Email] NVARCHAR(150) NULL, 
     CONSTRAINT [FK_Comments_ToBlogItem] FOREIGN KEY ([BlogItemId]) REFERENCES [BlogItem]([Id]), 
     CONSTRAINT [FK_Comments_ToComment] FOREIGN KEY ([ParentId]) REFERENCES [Comments]([Id])
 )
