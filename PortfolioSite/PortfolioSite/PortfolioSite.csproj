@@ -205,11 +205,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
+    <Compile Include="Enums\BlogPost.cs" />
     <Compile Include="Enums\Project.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BlogItemModel.cs" />
     <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\CommentsModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
@@ -345,8 +347,10 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\comments.js" />
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\jdenticon-1.8.0.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
