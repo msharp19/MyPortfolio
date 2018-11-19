@@ -927,3 +927,11 @@ article[role="pge-title-content"].contact-header {
 .email-form{
      padding-top: 20px;
 }
+
+.bold{
+    font-weight: 700;
+}
+
+.disabled-link{
+    pointer-events: none;
+}

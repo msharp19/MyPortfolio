@@ -7,6 +7,8 @@ using CaptchaMvc.HtmlHelpers;
 using System.Configuration;
 using PortfolioSite.Models;
 using System.Web.Routing;
+using CaptchaMvc.Attributes;
+using CaptchaMvc.Infrastructure;
 
 namespace PortfolioSite.Controllers
 {
@@ -16,6 +18,7 @@ namespace PortfolioSite.Controllers
         [HttpGet]
         public ActionResult Contact(string email, string name, string message)
         {
+            CaptchaUtils.CaptchaManager.StorageProvider = new CookieStorageProvider();
             var model = new ContactModel()
             {
                 PhoneNumber = ConfigurationManager.AppSettings["PhoneNumber"],
@@ -30,11 +33,12 @@ namespace PortfolioSite.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult Message(string email, string name, string message, string captcha)
+        public ActionResult Message(string email, string name, string message)
         {
-            if (this.IsCaptchaValid(captcha))
+            var isValid = this.IsCaptchaValid("Captcha is not valid");
+            if (isValid)
                 return new JsonResult(){
-                    Data = new { Status="Success", Message = "Thanks for the message!" },
+                    Data = new { Status="Success", Message = "Thanks for the message!", Url = Url.Action("Contact", "Contact", null, Request.Url.Scheme) },
                     JsonRequestBehavior = JsonRequestBehavior.DenyGet };
             //Failed captcha
             var dictionary = new RouteValueDictionary() {  };

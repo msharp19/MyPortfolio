@@ -8,8 +8,9 @@
             var isClean = checkForEmptyFields();
             var name = $("#name-val").val();
             var email = $("#email-val").val();
-            var comment = $("#comments").val();
-            var data = { name: name, email: email, message: comment};
+            var comment = $("#comments").text();
+            var captcha = $("#CaptchaInputText").val();
+            var data = { name: name, email: email, message: comment, CaptchaDeText: $("#CaptchaDeText").val(), CaptchaInputText: $("#CaptchaInputText").val() };
             if (isClean === true) {
                 toggle();
                 $.ajax({
@@ -18,8 +19,10 @@
                     data: data,
                     success: function (data) {
                         if (data.Status === "Success") {
-                            //clear form
                             outputSuccessMessage(data.Message, "Contact Recieved");
+                            setTimeout(function () {
+                                window.location.assign(data.Url);
+                            }, 1200);
                         }
                         else {
                             outputErrorMessage(data.Message, "Captcha Failure");

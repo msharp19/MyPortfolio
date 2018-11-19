@@ -200,6 +200,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -209,6 +210,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\CommentsModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -230,9 +233,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\about-images\about-image-1.jpg" />
-    <Content Include="images\about-images\about-image-2.jpg" />
-    <Content Include="images\about-images\about-image-3.jpg" />
+    <Content Include="images\about-images\me.jpg" />
     <Content Include="images\blog-images\blog-1.jpg" />
     <Content Include="images\blog-images\blog-2.jpg" />
     <Content Include="images\blog-images\blog-3.jpg" />
@@ -377,6 +378,7 @@
     <Content Include="Scripts\js\respond.min.js" />
     <None Include="Scripts\js\_references.js" />
     <Content Include="Scripts\js\toastr.min.js" />
+    <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -430,10 +432,13 @@
     <Content Include="Views\Work\DrinksAdmin.cshtml" />
     <Content Include="Views\Work\CryptoBot.cshtml" />
     <Content Include="Views\Work\AutoPay.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\NeuralNetwork.cshtml" />
+    <Content Include="Views\Blog\_Comments.cshtml" />
+    <Content Include="Views\Blog\_Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Captcha\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

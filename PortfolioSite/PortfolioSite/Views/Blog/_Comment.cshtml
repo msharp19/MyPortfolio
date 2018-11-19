@@ -1,0 +1,22 @@
+﻿@model PortfolioSite.Models.CommentModel
+
+<li class="comment-@Model.Id">
+    <figure>
+        <svg width="80" height="80" data-jdenticon-value="@Model.Username" class="img-responsive"></svg>
+    </figure>
+    <section>
+        <h4>@Model.Username      <a href="#" class="reply-btn" value="@Model.Id">Reply</a></h4>
+        <div class="date-pan">@Model.FormattedDateSent</div>
+        @Model.Content
+    </section>
+    <ol class="reply-pan">      
+    </ol>
+    @if (Model.SubCommentCount > 0)
+    {
+        <div class="load-more">
+            <a href="javascript:loadMoreComments(@Model.Id)" class="load-more-btn">Load More</a>
+        </div>
+    }    
+</li>
+
+@Scripts.Render("~/Scripts/jdenticon-1.8.0.js")

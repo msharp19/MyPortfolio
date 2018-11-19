@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[BlogItem]
+(
+	[Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
+    [Name] NVARCHAR(100) NOT NULL, 
+    [TimeStamp] DATETIME NULL, 
+    [Comments] NVARCHAR(1000) NULL
+)
