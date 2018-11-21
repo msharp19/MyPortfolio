@@ -15,6 +15,7 @@
     @Styles.Render("~/Content/css/normalize.css")
     @Styles.Render("~/Content/css/component.css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/js/jquery.min.js")
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -55,11 +56,8 @@
         </ul>
         <p class="copy-right">&copy; @DateTime.Now.Year - Matt Sharps Portfolio</p>
         <p class="copy-right">&copy; 2015  avana LLC.. All rights Reserved</p>
-
     </footer>
-
-   <!--Old here-->
-
+    <!--Old here-->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/js/html5shiv.js")
     @Scripts.Render("~/Scripts/js/modernizr.custom.js")
@@ -70,7 +68,6 @@
     @Scripts.Render("~/Scripts/js/bootstrap.min.js")
     @Scripts.Render("~/Scripts/js/custom.js")
     @Scripts.Render("~/Scripts/js/nav.js")
-    @Scripts.Render("~/Scripts/js/jquery.min.js")
     @Scripts.Render("~/Scripts/js/layout.js")
     @Scripts.Render("~/Scripts/layout.js")
     @RenderSection("scripts", required: false)

@@ -1,0 +1,12 @@
+﻿<pre><code class="cs">public static void TestNetwork(BasicNetwork network, double[][] trainingData, double[][] ideals, 
+Func<IMLDataPair, IMLData, bool> OutputData = null)
+{
+   //Create Dataset - data and correct classifications (matched by position)
+   var trainingSet = new BasicNeuralDataSet(trainingData, ideals);
+   foreach (var pair in trainingSet)
+   {
+       var output = network.Compute(pair.Input);
+       //Columns: |Rain|,|Wind|,|Sun|,|Cloud/Overcast|,|Snow|
+       if (OutputData != null) OutputData(pair, output);
+   }
+}</code></pre>

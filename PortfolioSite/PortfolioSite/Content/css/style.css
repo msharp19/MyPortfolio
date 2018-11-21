@@ -304,7 +304,6 @@ footer[role="footer"] {
     footer[role="footer"] > h1 a {
         margin: 0 auto;
         display: block;
-        max-width: 66px;
     }
 
     footer[role="footer"] nav {
@@ -871,7 +870,7 @@ article[role="pge-title-content"].contact-header {
     border: none;
     outline: none;
     background-color: #fb5353;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
     .commentys-form input[type="button"]:hover {
@@ -979,5 +978,46 @@ article[role="pge-title-content"].contact-header {
 }
 
 .post-details{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.intext-padding{
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+div#output {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px;
+    font-size: 14px;
+    background: black;
+    margin-top: 10px;
+    color: white;
+}
+div#bottom{
+    height:30px;
+    line-height:30px;
+    font-size:14px;
+}
+
+.std-button{
+    padding: 0 36px;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 21px;
+    line-height: 60px;
+    color: #FFF;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: #fb5353;
+    margin-top: 20px;
+}
 }

@@ -1,0 +1,34 @@
+﻿<pre><code class="cs">public static double[][] FormatInputValues(string[][] unformattedData)
+{
+      var formattedValues = new double[unformattedData.Count()][];
+      //Get distinct column name
+      //Columns: |Rain|,|Wind|,|Sun|,|Cloud/Overcast|,|Snow|
+      var distinctColumnNames = unformattedData.Select(x => x[0])
+               .Distinct();
+      //Create a row (distinct column values + 1 number field)
+      double[] row = null;
+      //Find min & max temp
+      var minTemp = unformattedData.Select(x => x[1]).Min(x => int.Parse(x));
+      var maxTemp = unformattedData.Select(x => x[1]).Max(x => int.Parse(x));
+      var deviationFromZero = 0 - minTemp;
+      var range = (minTemp < 0 ? 0-minTemp : 0+minTemp) + (maxTemp < 0 ? 0 - maxTemp : 0 + maxTemp);
+      //Add the rows to the new formatted array
+      for (int i = 0; i < unformattedData.Count(); i++)
+      {
+           //Init new row
+           row = new double[distinctColumnNames.Count() + 1];
+           //Expand columns for the weather
+           for (int j = 0; j < distinctColumnNames.Count(); j++)
+           {
+               if (unformattedData[i][0] == distinctColumnNames.ElementAt(j)) row[j] = 1;
+               else row[j] = 0;
+           }
+           //Take care of the temp
+           var temp = double.Parse(unformattedData[i][1]);
+           double onScale = ((((double)temp) + (((double)deviationFromZero))) / ((double)range));
+           row[row.Length - 1] = onScale;
+           //Set the row in the return list
+           formattedValues[i] = row;
+       }
+       return formattedValues;
+}</code></pre>

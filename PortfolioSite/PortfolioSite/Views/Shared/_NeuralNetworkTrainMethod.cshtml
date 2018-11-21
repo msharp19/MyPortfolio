@@ -1,0 +1,24 @@
+﻿<pre><code class="cs"> public static BasicNetwork TrainNetwork(BasicNetwork network, double[][] trainingData, double[][] ideals, 
+int maxIterationsBeforeCompletion = 5000, double tolerance = 0.001, Func<string, bool> OutputData = null)
+{
+    //Check we have data and a model to train
+    if (trainingData.Any() && ideals.Any() && network != null)
+    {
+         //Create Dataset - data and correct classifications (matched by position)
+         INeuralDataSet trainingSet = new BasicNeuralDataSet(trainingData, ideals);
+         //Propagate the data through the network
+         ITrain train = new ResilientPropagation(network, trainingSet);
+         //Set the iteration count to 0
+         var epoch = 0;
+         //Train
+         do
+         {
+             train.Iteration();
+             //If the delegate is defined, output the progress to it
+             if (OutputData != null) OutputData("Epoch #" + epoch + " Error:" + train.Error);
+             epoch++;
+         } while ((epoch < maxIterationsBeforeCompletion) && (train.Error > tolerance));
+    }
+    //Return the trained network
+    return network;
+}</code></pre>

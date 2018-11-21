@@ -1,0 +1,28 @@
+﻿<pre><code class="cs">public static BasicNetwork CreateNetwork(double[][] trainingData, double[][] ideals, int? hiddenLayerCount = null)
+{
+     //Make sure we have data
+     if (trainingData.Any() && ideals.Any())
+     {
+          //Count the number of inputs (columns)
+          var inputCount = trainingData[0].Count();
+          //Count the number of outputs
+          var outputCount = ideals[0].Count();
+          //Init the basic network
+          BasicNetwork network = new BasicNetwork();
+          //Add layers (input, hidden & output) - Activation function is the sigmoid
+          //We set true in ther layer constructor to include bias
+          //Input layer has 7 total nodes 
+          network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, inputCount));
+          //Hidden can be as many as you want - the more you have increases propagation times 
+          //Optimisation is usuall trial & error
+          //This layer helps us find more complex patterns on the data
+          network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, (hiddenLayerCount != null) ? hiddenLayerCount.Value : (inputCount * 3)));
+          //Output layer is the count of ideal values
+          network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, outputCount));
+          network.Structure.FinalizeStructure();
+          //Randomize the node weights to start the training
+          network.Reset();
+          return network;
+     }
+     return null;
+}</code></pre>

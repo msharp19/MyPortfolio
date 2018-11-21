@@ -1,0 +1,40 @@
+﻿@model PortfolioSite.Models.BlogItemModel
+
+@{
+    ViewBag.Title = "_CNN";
+}
+
+<main role="main-inner-wrapper" class="container">
+    <div class="blog-details">
+        <article class="post-details" id="post-details">
+            <header role="bog-header" class="bog-header text-center">
+                <h3><span>19</span> November 2018</h3>
+                <h2>
+                    A guide in how to work with Convolutional Neural networks in C# and a working example.
+                </h2>
+            </header>
+            <figure>
+                <a href="../images/blog-main-images/cnn.png">
+                    <img src="../images/blog-main-images/cnn.png" alt="" class="img-responsive" />
+                </a>
+            </figure>
+            <div class="enter-content">
+                 <p></p>
+                 <p></p>
+                 <figure class="intext-padding">
+                    <a href="../images/blog-main-images/cnn-diagram.png">
+                        <img src="../images/blog-main-images/cnn-diagram.png" alt="" class="img-responsive" />
+                    </a>
+                </figure>
+                <p></p>
+                <p></p>
+            </div>
+        </article>
+        @Html.Partial("_Comments", Model.CommentModel)
+    </div>
+</main>
+
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>

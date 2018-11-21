@@ -10,12 +10,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CaptchaMvc.HtmlHelpers;
+using ANN;
+using PortfolioSite.Utils;
 
 namespace PortfolioSite.Controllers
 {
     public class BlogController : Controller
     {
-
         private MsportfolioEntities entities = new MsportfolioEntities();
         private ICommentService _commentService;
         private IMapper _mapper;
@@ -68,6 +69,42 @@ namespace PortfolioSite.Controllers
             var comments = _commentService.GetComments(blogPost.ToString());
             model.Comments = _mapper.Map<IList<CommentModel>>(comments);
             return model;
+        }
+
+        public ActionResult RunModel(string connectionId)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(connectionId))
+                {
+                    //Get the raw data
+                    var rawData = NetworkFactory.GetInputData();
+                    var ideals = NetworkFactory.GetIdealValues();
+                    //Format the data so it can be used in a neural network - all columns will have a value between 0-1 (floating point)
+                    var formattedData = NetworkFactory.FormatInputValues(rawData);
+                    //Create Network
+                    var network = NetworkFactory.CreateNetwork(formattedData, ideals, 40);
+                    //Train network
+                    var trainedNetwork = NetworkFactory.TrainNetwork(network, formattedData, ideals, 20000,
+                        0.001, connectionId, Functions.SendProgress);
+                    //Finally test the network
+                    NetworkFactory.TestNetwork(network, formattedData, ideals, connectionId, Functions.SendProgress);
+                    //Return status
+                    return new JsonResult()
+                    {
+                        Data = new { Status = "Success", Message = "Complete" },
+                        JsonRequestBehavior = JsonRequestBehavior.DenyGet
+                    };
+                }
+                throw new Exception("Empty Connection ID");
+            }
+            catch (Exception ex) {
+                return new JsonResult()
+                {
+                    Data = new { Status = "Failure", Message = "Error running model" },
+                    JsonRequestBehavior = JsonRequestBehavior.DenyGet
+                };
+            }
         }
     }
 }
