@@ -1,5 +1,7 @@
 ﻿$(function () {
+
     var off = true;
+
     $("#menu-button").on("click", function () {
         if (off) {
             off = false;
@@ -13,4 +15,5 @@
             });
         }
     });
+
 });

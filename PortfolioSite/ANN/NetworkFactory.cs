@@ -152,7 +152,7 @@ namespace ANN
 
         public static BasicNetwork TrainNetwork(BasicNetwork network, double[][] trainingData, double[][] ideals, 
             int maxIterationsBeforeCompletion = 5000, double tolerance = 0.001, string connectionId = null,
-            Func<string, string, bool> OutputData = null)
+            Func<string, string, bool, bool> OutputData = null)
         {
             //Check we have data and a model to train
             if (trainingData.Any() && ideals.Any() && network != null)
@@ -168,7 +168,7 @@ namespace ANN
                 {
                     train.Iteration();
                     //If the delegate is defined, output the progress to it
-                    if (OutputData != null) OutputData(connectionId, "Epoch #" + epoch + " Error:" + train.Error);
+                    if (OutputData != null) OutputData(connectionId, "Epoch #" + epoch + " Error:" + train.Error, true);
                     epoch++;
                 } while ((epoch < maxIterationsBeforeCompletion) && (train.Error > tolerance));
             }
@@ -177,7 +177,7 @@ namespace ANN
         }
 
         public static void TestNetwork(BasicNetwork network, double[][] trainingData, double[][] ideals, 
-            string connectionId, Func<string, string, bool> OutputData = null)
+            string connectionId, Func<string, string, bool, bool> OutputData = null)
         {
             //Create Dataset - data and correct classifications (matched by position)
             var trainingSet = new BasicNeuralDataSet(trainingData, ideals);
@@ -185,7 +185,7 @@ namespace ANN
             {
                 var output = network.Compute(pair.Input);
                 //Columns: |Rain|,|Wind|,|Sun|,|Cloud/Overcast|,|Snow|
-                if (OutputData != null) OutputData(connectionId, FormatOutput(pair, output));
+                if (OutputData != null) OutputData(connectionId, FormatOutput(pair, output), false);
             }
         }
 

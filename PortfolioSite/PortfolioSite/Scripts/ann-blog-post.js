@@ -16,11 +16,15 @@
                 }
                 modelRunning = false;
                 toggle();
+                batch = 0;
+                outputMessage = "</br>";
             },
             error: function () {
                 outputErrorMessage("Something went wrong :/", "Opps");
                 modelRunning = false;
                 toggle();
+                batch = 0;
+                outputMessage = "</br>";
             }
         });
     }

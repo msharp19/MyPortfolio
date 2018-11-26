@@ -25,7 +25,7 @@
                 <p>ANNs (artificial neural networks) have been modelled on the way that our brain works to a degree (a simplified version). As can be seen in the diagram below we have 3 layers of neurons (3 for simplicity but can have many more). We have a input layer which is essentially the data being inputted, the number of nodes correspond to the field count (data) you are training the model with - a 1:1 relationship. The next layer in the diagram is the hidden layer in the center. It is connected in lots of ways to both the input and output nodes. The hidden nodes act like the neurons on the brain firing and not firing based on the input stimuli. The ability to fire is encoded in the hidden weighting that the neuron possesses and on a type of activation function that the neron follows (defined at setup). Finally we have an output layer which is essentially the prediction, each node corresponds to a real world value. When the model is setup, the nodes will be assigned some random weights and paths random biases. Once we start training the model these weights get updated as data is propegated through the network. We use the stochastic gradient descent optimization algorithm to adjust the weight of neurons by calculating the gradient of the loss function. Once we have sufficiently trained a the model, you can pass data through the network and the model will fire certain output neurons - your prediction.</p>
                 <figure class="intext-padding">
                     <a href="../images/blog-main-images/nn-diagram.png">
-                        <img src="../images/blog-main-images/nn-diagram.png" alt="" class="img-responsive" />
+                        <img src="../images/blog-main-images/nn-diagram.png" alt="" class="img-responsive auto-margin" />
                     </a>
                 </figure>
                 <p>To train a network we need data, not only that but we need normalized data in the form of a decimal (between 0-1). The output will be in this same format, this can be used as a confidence (%). In the following section we will see how to format data so we are able to propegate it through a network.</p>
@@ -64,6 +64,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 <script>
     var connectionId = "";
+    var outputMessage = "</br>";
+    var batch = 0;
     hljs.initHighlightingOnLoad();
 </script>
 
@@ -73,6 +75,7 @@
     @Scripts.Render("~/Scripts/js/toastr.min.js")
     @Scripts.Render("~/Scripts/messaging.js")
     @Scripts.Render("~/Scripts/ann-blog-post.js")
+    @Scripts.Render("~/Scripts/code-block.js")
 }
 
 @Scripts.Render("~/Scripts/ann.js")

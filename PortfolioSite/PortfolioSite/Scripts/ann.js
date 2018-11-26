@@ -1,15 +1,15 @@
 ﻿$(function () {
     // Reference the auto-generated proxy for the hub.
     var progress = $.connection.annHub;
-    var outputMessage = "</br>";
-    var batch = 0;
 
-    progress.client.addProgress = function (message) {
+    progress.client.addProgress = function (message, limit) {
         outputMessage += message + "</br>";
         batch++;
-        if (batch == 9) {
+        if (batch == 1000 || limit === false) {
             batch = 0;
             $(".output-text").append(outputMessage);
+            outputMessage = "";
+            $('#output').scrollTop($('.output-text').height());
         }
     };
 
@@ -17,4 +17,5 @@
     $.connection.hub.start().done(function () {
         connectionId = $.connection.hub.id;
     });
+
 });

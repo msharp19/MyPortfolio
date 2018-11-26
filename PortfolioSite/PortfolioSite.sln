@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioSite", "PortfolioSite\PortfolioSite.csproj", "{B4BD52A2-0CDC-4620-BEEC-39B801B109F8}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ANN", "ANN\ANN.csproj", "{8A875DA2-C838-457A-8373-862EE268F950}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkTester", "NetworkTester\NetworkTester.csproj", "{64F01539-6F30-4681-8342-C6B1E3CCE955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNN", "CNNV2\CNN.csproj", "{1CC02C75-6D59-47B8-AC4A-D6BA40D934A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,8 +61,15 @@ Global
 		{64F01539-6F30-4681-8342-C6B1E3CCE955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64F01539-6F30-4681-8342-C6B1E3CCE955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64F01539-6F30-4681-8342-C6B1E3CCE955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC02C75-6D59-47B8-AC4A-D6BA40D934A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC02C75-6D59-47B8-AC4A-D6BA40D934A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC02C75-6D59-47B8-AC4A-D6BA40D934A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC02C75-6D59-47B8-AC4A-D6BA40D934A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {811AEE6C-B466-474A-8ECC-F9FCB3235467}
 	EndGlobalSection
 EndGlobal

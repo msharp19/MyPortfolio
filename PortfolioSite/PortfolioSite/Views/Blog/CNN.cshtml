@@ -19,15 +19,27 @@
                 </a>
             </figure>
             <div class="enter-content">
-                 <p></p>
-                 <p></p>
-                 <figure class="intext-padding">
+                <p></p>
+                <p></p>
+                <figure class="intext-padding">
                     <a href="../images/blog-main-images/cnn-diagram.png">
                         <img src="../images/blog-main-images/cnn-diagram.png" alt="" class="img-responsive" />
                     </a>
                 </figure>
                 <p></p>
                 <p></p>
+                <div class="prediction-center">
+                    <div id="sketch" class="working-example">
+                        <canvas id="paint"></canvas>
+                    </div>
+                    <div class="inline-block">
+                        <div class="predict-box"><span class="predict-box-inner"></span></div>
+                    </div>
+                    <div id="canvas-controls">
+                        <input name="" id="clear-canvas" class="action-button" type="button" value="Clear">
+                        <input name="" id="predict" class="action-button" type="button" value="Predict">
+                    </div>
+                </div>
             </div>
         </article>
         @Html.Partial("_Comments", Model.CommentModel)
@@ -38,3 +50,4 @@
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+@Scripts.Render("~/Scripts/cnn.js")
