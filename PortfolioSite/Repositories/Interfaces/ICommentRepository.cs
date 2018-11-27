@@ -13,5 +13,7 @@ namespace Repositories.Interfaces
         IEnumerable<Comment> GetComments(string blogName);
         IEnumerable<Comment> GetCommentsByParentId(int parentId);
         Comment GetComment(int commentId);
+        void UpdateComment(Comment comment);
+        int SaveChanges();
     }
 }

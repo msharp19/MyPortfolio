@@ -15,6 +15,7 @@ using PortfolioSite.Utils;
 using CNNV2;
 using System.IO;
 using System.Drawing;
+using System.Web.Routing;
 
 namespace PortfolioSite.Controllers
 {
@@ -29,7 +30,8 @@ namespace PortfolioSite.Controllers
             _commentService = new CommentService(entities);
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Comment, CommentModel>();
+                cfg.CreateMap<Comment, CommentModel>()
+                .ForMember(dest => dest.SubComments, opt => opt.MapFrom(src => src.Comments1));
             });
             _mapper = config.CreateMapper();
         }
@@ -39,29 +41,38 @@ namespace PortfolioSite.Controllers
             return View();
         }
 
-        public ActionResult AddComment(string blogName, string userName, string email, string comment)
+        public ActionResult AddComment(BlogPost blogName, string userName, string email, string comment, int? replyId)
         {
             var isValid = this.IsCaptchaValid("Captcha is not valid");
             if (isValid)
             {
-                var added = _commentService.AddComment(blogName, userName, email, comment);
+                var added = _commentService.AddComment(blogName.ToString(), userName, email, comment, replyId);
                 if (added != null) return new JsonResult()
                 {
-                    Data = new { Status = "Success", Message = "You any good at maths?" },
+                    Data = new { Status = "Success", Message = "Comment added." },
                     JsonRequestBehavior = JsonRequestBehavior.DenyGet
                 };
             }
+
+            var routeValues = new RouteValueDictionary();
+            routeValues.Add("blogPost", blogName.ToString());
+            routeValues.Add("userName", userName);
+            routeValues.Add("email", email);
+            routeValues.Add("comment", comment);
             return new JsonResult()
             {
-                Data = new { Status = "Failure", Message = "You any good at maths?" },
+                Data = new { Status = "Failure", Message = "Captcha wasn't correct!", Url = Url.Action("BlogPost", "Blog", routeValues, Request.Url.Scheme) },
                 JsonRequestBehavior = JsonRequestBehavior.DenyGet
             };
         }
 
-        public ActionResult BlogPost(BlogPost blogPost)
+        public ActionResult BlogPost(BlogPost blogPost, string userName, string email, string comment)
         {
             var model = new BlogItemModel(blogPost);
             var commentModel = GetCommentModelForBlog(blogPost);
+            commentModel.Username = userName;
+            commentModel.Email = email;
+            commentModel.Comment = comment;
             model.CommentModel = commentModel;
             model.BlogPost = blogPost;
             return View(blogPost.ToString(), model);
@@ -72,6 +83,7 @@ namespace PortfolioSite.Controllers
             var model = new CommentsModel();
             var comments = _commentService.GetComments(blogPost.ToString());
             model.Comments = _mapper.Map<IList<CommentModel>>(comments);
+            model.CommentCount = model.Comments.Count();
             return model;
         }
 

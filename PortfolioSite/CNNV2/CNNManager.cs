@@ -135,14 +135,14 @@ namespace CNNV2
             var engine = graph.CreateTrainingEngine(dataset.TrainData, config.LEARNING_RATE, config.BATCH_SIZE);
             if (!String.IsNullOrWhiteSpace(outputModelPath) && File.Exists(outputModelPath)) engine = 
                     LoadNetwork(outputModelPath, graph, config, dataset);
-            else graph = CreateStandardNetworkFromScratch(engine, graph, config, dataset);
+            else graph = CreateStandardNetwork(engine, graph, config, dataset);
 
             // lower the learning rate over time
             engine.LearningContext.ScheduleLearningRate(15, config.LEARNING_RATE / 2);
             return engine;
         }
 
-        public static GraphFactory CreateStandardNetworkFromScratch(IGraphTrainingEngine engine, GraphFactory graph, NetworkConfig config, 
+        public static GraphFactory CreateStandardNetwork(IGraphTrainingEngine engine, GraphFactory graph, NetworkConfig config, 
             DataSet dataset)
         {
             graph.Connect(engine)
@@ -162,7 +162,8 @@ namespace CNNV2
             return graph;
         }
 
-        public static IGraphTrainingEngine LoadNetwork(string outputModelPath, GraphFactory graph, NetworkConfig config, DataSet dataset)
+        public static IGraphTrainingEngine LoadNetwork(string outputModelPath, GraphFactory graph, NetworkConfig config, 
+            DataSet dataset)
         {
             IGraphTrainingEngine engine = null;
             using (var file = new FileStream(outputModelPath, FileMode.Open, FileAccess.Read))

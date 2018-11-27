@@ -32,5 +32,10 @@ namespace Repositories
         {
             return _entities.Comments.FirstOrDefault(x => x.Id == commentId);
         }
+
+        public void UpdateComment(Comment comment)
+        {
+            _entities.Entry(comment).State = System.Data.Entity.EntityState.Modified;
+        }
     }
 }

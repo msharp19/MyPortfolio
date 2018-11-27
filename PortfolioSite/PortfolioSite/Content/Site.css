@@ -38,56 +38,18 @@ textarea {
     color: black !important;
 }
 
-.eth-mo {
-    margin-top: 18% !important;
+.figure-item {
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    vertical-align: middle !important;
 }
 
-.login-admin{
-    margin-top: 8% !important;
-}
-
-.model-cnn{
-    margin-top: 10% !important;
-}
-
-.irc-chat{
-    margin-top: 16% !important;
-}
-
-.requests{
-    margin-top: 10% !important;
-}
-
-.auto-pay{
-    margin-top: 8% !important;
-}
-
-.img-edit{
-    margin-top: 10% !important;
-}
-
-.img-grab{
-    margin-top: 11% !important;
-}
-
-.extension{
-    margin-top: 26% !important;
-}
-
-.crypto-bot{
-    margin-top: 13% !important;
-}
-
-.video-feed{
-    margin-top: 17% !important;
-}
-
-.admin-drinks{
-    margin-top: 14% !important;
-}
-
-.mo-ico{
-    margin-top: 12% !important;
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column; /* column | row */
 }
 
 .logo-size{

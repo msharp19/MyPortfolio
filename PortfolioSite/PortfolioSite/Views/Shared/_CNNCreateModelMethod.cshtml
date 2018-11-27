@@ -1,0 +1,37 @@
+﻿<pre><code class="cs"><i class="fa fa-copy code-copy"></i>public static IGraphTrainingEngine BuildNetwork(NetworkConfig config, GraphFactory graph, DataSet dataset, string outputModelPath = null)
+{
+     // configure the network properties
+     graph.CurrentPropertySet
+          .Use(graph.GradientDescent.Adam)
+          .Use(graph.GaussianWeightInitialisation(config.ZERO_BIAS, config.STANDARD_DEVIATION, config.GAUSSIAN_VARIANCE_CALIBRATION))
+     ;
+
+     var engine = graph.CreateTrainingEngine(dataset.TrainData, config.LEARNING_RATE, config.BATCH_SIZE);
+     if (!String.IsNullOrWhiteSpace(outputModelPath) && File.Exists(outputModelPath)) engine = 
+            LoadNetwork(outputModelPath, graph, config, dataset);
+     else graph = CreateStandardNetwork(engine, graph, config, dataset);
+
+     // lower the learning rate over time
+     engine.LearningContext.ScheduleLearningRate(15, config.LEARNING_RATE / 2);
+     return engine;
+}
+
+public static GraphFactory CreateStandardNetwork(IGraphTrainingEngine engine, GraphFactory graph, NetworkConfig config, 
+         DataSet dataset)
+{
+     graph.Connect(engine)
+           .AddConvolutional(filterCount: 16, padding: 2, filterWidth: 5, filterHeight: 5, stride: 1, shouldBackpropagate: false)
+           .Add(graph.LeakyReluActivation())
+           .AddMaxPooling(filterWidth: 2, filterHeight: 2, stride: 2)
+           .AddConvolutional(filterCount: 32, padding: 2, filterWidth: 5, filterHeight: 5, stride: 1)
+           .Add(graph.LeakyReluActivation())
+           .AddMaxPooling(filterWidth: 2, filterHeight: 2, stride: 2)
+           .Transpose()
+           .AddFeedForward(config.HIDDEN_LAYER_SIZE)
+           .Add(graph.LeakyReluActivation())
+           .AddDropOut(dropOutPercentage: 0.5f)
+           .AddFeedForward(dataset.TrainData.OutputSize)
+           .Add(graph.SoftMaxActivation())
+           .AddBackpropagation(config.ERROR_METRIC);
+     return graph;
+}</code></pre>

@@ -12,6 +12,7 @@
                 <h2>
                     A guide in how to work with Convolutional Neural networks in C# and a working example.
                 </h2>
+                <a class="proj-url" href="https://github.com/msharp19/MyPortfolio/tree/master/PortfolioSite/CNNV2">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a>
             </header>
             <figure>
                 <a href="../images/blog-main-images/cnn.png">
@@ -26,7 +27,30 @@
                         <img src="../images/blog-main-images/cnn-diagram.png" alt="" class="img-responsive" />
                     </a>
                 </figure>
-                <p></p>
+                <figure class="intext-padding">
+                    <a href="../images/blog-main-images/train-cnn.png">
+                        <img src="../images/blog-main-images/train-cnn.png" alt="" class="img-responsive" />
+                    </a>
+                </figure>
+                <figure class="intext-padding">
+                    <a href="../images/blog-main-images/train-cnn-2.png">
+                        <img src="../images/blog-main-images/train-cnn-2.png" alt="" class="img-responsive" />
+                    </a>
+                </figure>
+                <figure class="intext-padding">
+                    <a href="../images/blog-main-images/train-cnn-3.png">
+                        <img src="../images/blog-main-images/train-cnn-3.png" alt="" class="img-responsive" />
+                    </a>
+                </figure>
+                <figure class="intext-padding">
+                    <a href="../images/blog-main-images/mnist-change.png">
+                        <img src="../images/blog-main-images/mnist-change.png" alt="" class="img-responsive" />
+                    </a>
+                </figure>
+                <p>BrightWire - library used in following example: <a href="https://github.com/jdermody/brightwire">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a></p>
+                @Html.Partial("_CNNCreateModelMethod")
+                @Html.Partial("_CNNTrainMethod")
+                @Html.Partial("_CNNTestMethod")
                 <p></p>
                 <div class="prediction-center">
                     <div id="sketch" class="working-example">

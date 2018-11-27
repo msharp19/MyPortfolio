@@ -1,0 +1,43 @@
+﻿<pre><code class="cs"><i class="fa fa-copy code-copy"></i>public static int TestItems(string modelPath, Bitmap testImage)
+{
+     using (var lap = BrightWireProvider.CreateLinearAlgebra(false))
+     {
+          var graph = new GraphFactory(lap);
+          DataSet testDataset = BuildTestSet(graph,testImage);
+          var errorMetric = graph.ErrorMetric.OneHotEncoding;
+          var config = new NetworkConfig();
+          config.ERROR_METRIC = errorMetric;
+
+          var engine = LoadNetwork(modelPath, graph);
+
+          //Export the final model and execute it on the training set
+          var executionEngine = graph.CreateEngine(engine.Graph);
+          var output = executionEngine.Execute(testDataset.TestData);
+          return GetLargestPercent(output[0]);
+     }
+}
+
+private static DataSet BuildTestSet(GraphFactory graph, Bitmap testImage)
+{
+     //Build test set
+     var images = new List<Mnist.Image>();
+     var bytes = ImageFunctions.ImageToRepresentativeBytes(testImage);
+     var mnist = new Mnist.Image(bytes, 1);
+     images.Add(mnist);
+     var dataSource = BuildTensors(graph, null, images);
+     return new DataSet() {
+          TestData = dataSource,
+          TestRowCount = dataSource.RowCount
+     };
+}
+    
+public static IGraphEngine LoadNetwork(string outputModelPath, GraphFactory graph)
+{
+     IGraphEngine engine = null;
+     using (var file = new FileStream(outputModelPath, FileMode.Open, FileAccess.Read))
+     {
+         var model = Serializer.Deserialize<GraphModel>(file);
+         engine = graph.CreateEngine(model.Graph);
+     }
+     return engine;
+}</code></pre>

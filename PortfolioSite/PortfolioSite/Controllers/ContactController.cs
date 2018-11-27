@@ -9,6 +9,7 @@ using PortfolioSite.Models;
 using System.Web.Routing;
 using CaptchaMvc.Attributes;
 using CaptchaMvc.Infrastructure;
+using TelegramMessenger;
 
 namespace PortfolioSite.Controllers
 {
@@ -37,16 +38,21 @@ namespace PortfolioSite.Controllers
         {
             var isValid = this.IsCaptchaValid("Captcha is not valid");
             if (isValid)
-                return new JsonResult(){
-                    Data = new { Status="Success", Message = "Thanks for the message!", Url = Url.Action("Contact", "Contact", null, Request.Url.Scheme) },
-                    JsonRequestBehavior = JsonRequestBehavior.DenyGet };
+            {
+                MessageClient.SendMessage($"From:{email}({name})-{message}");
+                return new JsonResult()
+                {
+                    Data = new { Status = "Success", Message = "Thanks for the message!", Url = Url.Action("Contact", "Contact", null, Request.Url.Scheme) },
+                    JsonRequestBehavior = JsonRequestBehavior.DenyGet
+                };
+            }
             //Failed captcha
             var dictionary = new RouteValueDictionary() {  };
             dictionary.Add("email", email);
             dictionary.Add("name", name);
             dictionary.Add("message", message);
             return new JsonResult() {
-                Data = new { Status = "Failure", Message = "You any good at maths?", Url= Url.Action("Contact", "Contact", dictionary, Request.Url.Scheme) },
+                Data = new { Status = "Failure", Message = "Captcha is not correct.", Url= Url.Action("Contact", "Contact", dictionary, Request.Url.Scheme) },
                 JsonRequestBehavior = JsonRequestBehavior.DenyGet
             };
         }

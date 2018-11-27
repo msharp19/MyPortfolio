@@ -1,29 +1,42 @@
 ﻿@model PortfolioSite.Models.CommentsModel
 @using CaptchaMvc.HtmlHelpers
 
- <!-- Comments -->
+<!-- Comments -->
 <div class="comments-pan">
     <h3>@Model.CommentCount Comments</h3>
-    <ul class="comments-reply">
-        @for(int i=0;i<@Model.CommentCount;i++)
+    <ul class="comments-reply comments-main-box">
+        @for (int i = 0; i < @Model.CommentCount; i++)
         {
             @Html.Partial("_Comment", @Model.Comments[i])
         }
     </ul>
     <!--Comment Form-->
     <div class="commentys-form">
-        <h4>Leave a comment</h4>
+        @Html.Hidden("ReplyId", null)
+        <h4>Leave a comment <span class="reply-panel" style="display:none">- Reply to <span class="reply-name"></span></span></h4>
         <div class="row">
             <form action="" method="get">
                 <div class="col-xs-12 col-sm-4 col-md-4">
-                    <input name="" id="username" type="text" placeholder="Whats your name *">
+                    <input name="" id="name-val" type="text" placeholder="Whats your name *" value="@Model.Username">
+                    <span id="name" class="validation-email">
+                        <i class="fa fa-check green" style="display:none;"></i>
+                        <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
+                    </span>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
-                    <input name="" id="email-value" type="email" placeholder="Whats your email *">
+                    <input name="" id="email-val" type="email" placeholder="Whats your email *" value="@Model.Email">
+                    <span id="email" class="validation-email">
+                        <i class="fa fa-check green" style="display:none;"></i>
+                        <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
+                    </span>
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <textarea name="" id="comment-text" cols="" rows="" placeholder="Whats on your mind"></textarea>
+                    <textarea name="" id="comments" cols="" rows="" placeholder="Whats on your mind">@Model.Comment</textarea>
+                    <span id="comment-box" class="validation-email">
+                        <i class="fa fa-check green" style="display:none;"></i>
+                        <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
+                    </span>
                 </div>
                 <div class="comment-captcha">
                     @Html.Captcha(5)
@@ -37,4 +50,5 @@
 </div>
 
 @Scripts.Render("~/Scripts/messaging.js")
+@Scripts.Render("~/Scripts/form-validation.js")
 @Scripts.Render("~/Scripts/comments.js")

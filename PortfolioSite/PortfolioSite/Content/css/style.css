@@ -383,7 +383,7 @@ main[role="main-inner-wrapper"] .about-content {
         font-size: 17px;
         line-height: 30px;
         color: #FFF;
-        padding-bottom: 20px;
+
     }
 
 main[role="main-inner-wrapper"] .thumbnails-pan {
@@ -786,7 +786,7 @@ article[role="pge-title-content"].contact-header {
             line-height: 30px;
             font-weight: 300;
             color: #343434;
-            width: 92%;
+            width: 83% !important;
         }
 
             .comments-reply li section .date-pan {
@@ -1069,7 +1069,7 @@ code {
     border: 1px solid black;
     font-size: 150px;
     font-weight: 700;
-    padding-left: 29px;
+    text-align: center;
 }
 
 .predict-box-inner {
@@ -1096,3 +1096,22 @@ code {
     margin-top: 20px;
 }
 
+#run-model {
+    max-width: 225px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#add-comment {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reply-panel {
+    color: #fb5353;
+}
+
+.reply-btn {
+    float: right;
+}

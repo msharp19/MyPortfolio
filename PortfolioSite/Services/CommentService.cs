@@ -23,27 +23,43 @@ namespace Services
 
         public IList<Comment> GetComments(string blogPostName, int pageNum = 1, int perPage = 10){
             var comments = _commentRepository.GetComments(blogPostName)
+                .Where(x => x.ParentId == null)
                 .Skip(perPage * (pageNum - 1))
                 .Take(perPage);
             return comments.Any() ? comments.ToList() : new List<Comment>();
         }
 
-        public Comment AddComment(string blogName, string userName, string email, string comment)
+        public Comment AddComment(string blogName, string userName, string email, string comment, int? replyId = null)
         {
             var blogPost = _blogRepository.GetBlogByName(blogName);
             if (blogPost != null)
             {
-                return _commentRepository.AddComment(new Comment()
+                var cmt = _commentRepository.AddComment(new Comment()
                 {
                     BlogItemId = blogPost.Id,
                     Content = comment,
-                    ParentId = null,
+                    ParentId = replyId,
                     SubCommentCount = 0,
                     Username = userName,
-                    Email = email
+                    Email = email,
+                    DateSent= DateTime.Now
                 });
+                if (replyId != null) UpdateSubCommentCount(replyId.Value);
+                _commentRepository.SaveChanges();
+                return cmt;
             }
             return null;
+        }
+
+        public bool UpdateSubCommentCount(int replyId)
+        {
+            var comment = _commentRepository.GetComment(replyId);
+            if (comment != null)
+            {
+                _commentRepository.UpdateComment(comment);
+                return true;
+            }
+            return false;
         }
     }
 }

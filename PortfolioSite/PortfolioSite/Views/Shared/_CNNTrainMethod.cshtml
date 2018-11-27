@@ -1,0 +1,54 @@
+﻿<pre><code class="cs"><i class="fa fa-copy code-copy"></i>public static float TrainCNN(string dataFolderPath, string outputModelPath)
+{
+     using (var lap = BrightWireProvider.CreateLinearAlgebra(false))
+     {
+          var graph = new GraphFactory(lap);
+          var dataset = CreateDataset(graph, dataFolderPath);
+
+          // one hot encoding uses the index of the output vector's maximum value as the classification label
+          var errorMetric = graph.ErrorMetric.OneHotEncoding;
+          var config = new NetworkConfig();
+          config.ERROR_METRIC = errorMetric;
+
+          var engine = BuildNetwork(config, graph, dataset, outputModelPath);
+          var bestGraph = TrainModel(engine, config, dataset, outputModelPath);
+
+          // export the final model and execute it on the training set
+          var executionEngine = graph.CreateEngine(bestGraph ?? engine.Graph);
+          var output = executionEngine.Execute(dataset.TestData);
+          return output.Average(o => o.CalculateError(errorMetric));
+     }
+}
+
+public static ExecutionGraph TrainModel(IGraphTrainingEngine engine, NetworkConfig config, DataSet dataset, string outputModelPath)
+{
+     // train the network for twenty iterations, saving the model on each improvement
+     BrightWire.Models.ExecutionGraph bestGraph = null;
+     engine.Train(config.TRAINING_ITERATIONS, dataset.TestData, config.ERROR_METRIC, model => {
+          bestGraph = model.Graph;
+          if (!String.IsNullOrWhiteSpace(outputModelPath))
+          {
+              using (var file = new FileStream(outputModelPath, FileMode.Create, FileAccess.Write))
+              {
+                  Serializer.Serialize(file, model);
+              }
+          }
+     });
+     return bestGraph;
+}
+    
+public static DataSet CreateDataset(GraphFactory graph, string folderPath)
+{
+     var trainLabelPath = Path.Combine(folderPath, "train-labels.idx1-ubyte");
+     var trainDataPath = Path.Combine(folderPath, "train-images.idx3-ubyte");
+     var testLabelPath = Path.Combine(folderPath, "t10k-labels.idx1-ubyte");
+     var testDataPath = Path.Combine(folderPath, "t10k-images.idx3-ubyte");
+     var trainingData = BuildTensors(graph, null, Mnist.Load(trainLabelPath, trainDataPath));
+     var testData = BuildTensors(graph, trainingData, Mnist.Load(testLabelPath, testDataPath));
+     return new DataSet() {
+          TestData = testData,
+          TrainData = trainingData,
+          TrainingRowCount = trainingData.RowCount,
+          TestRowCount = testData.RowCount
+     };
+}</code></pre>

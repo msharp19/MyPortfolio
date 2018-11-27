@@ -11634,6 +11634,7 @@
     <Content Include="Scripts\code-block.js" />
     <Content Include="Scripts\comments.js" />
     <Content Include="Scripts\contact.js" />
+    <Content Include="Scripts\form-validation.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jdenticon-1.8.0.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -11735,6 +11736,9 @@
     <Content Include="Views\Shared\_NeuralNetworkRunMethod.cshtml" />
     <Content Include="Views\Shared\_NeuralNetworkFormatMethod.cshtml" />
     <Content Include="Views\Blog\CNN.cshtml" />
+    <Content Include="Views\Shared\_CNNCreateModelMethod.cshtml" />
+    <Content Include="Views\Shared\_CNNTrainMethod.cshtml" />
+    <Content Include="Views\Shared\_CNNTestMethod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -43,7 +43,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="row">
-                    <textarea name="comments" id="comments" cols="" rows="" placeholder="Whats in your mind" >@Model.FormMessage</textarea>
+                    <textarea name="comments" id="comments" cols="" rows="" placeholder="Whats in your mind">@Model.FormMessage</textarea>
                     <span id="comments-val" class="validation-email">
                         <i class="fa fa-check green" style="display:none;"></i>
                         <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
@@ -52,13 +52,13 @@
                 <div class="clearfix"></div>
                 <div class="button-panel">
                     <div id="captcha-container">
-                       @Html.Captcha(5)
+                        @Html.Captcha(5)
                     </div>
                     <div class="button-container">
                         <input id="send-email" name="" class="inline" type="button" value="Send Telegram">
                         <span class="spinner"><img id="email-load" class="inline load-margin none" width="55" height="55" src="~/images/spinner.gif" alt="" /></span>
                     </div>
-                </div>           
+                </div>
                 <div id="simple-msg"></div>
             </form>
         </div>
@@ -74,6 +74,7 @@
 @Scripts.Render("~/Scripts/js/html5shiv.js")
 @Scripts.Render("~/Scripts/js/toastr.min.js")
 @Scripts.Render("~/Scripts/messaging.js")
+@Scripts.Render("~/Scripts/form-validation.js")
 @Scripts.Render("~/Scripts/contact.js")
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=@(Model.GoogleMapsAPIKey)&callback=initMap">
