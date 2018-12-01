@@ -22,16 +22,30 @@
                 </a>
             </figure>
             <div class="enter-content">
-                <p>Everyone is talking about AI, but what is it? On a basic level our brains have a set of connected neurons (essentially nodes) connected in some weird and wonderful ways (not linearly). Neurons are essentially just units that take an input and give an output (fire or not) based on the given stimuli, a yes or a no. These nodes are then connected to each other and paths are formed or lit up based on certain stimuli (each node is still working idependantly).</p>
-                <p>ANNs (artificial neural networks) have been modelled on the way that our brain works to a degree (a simplified version). As can be seen in the diagram below we have 3 layers of neurons (3 for simplicity but can have many more). We have a input layer which is essentially the data being inputted, the number of nodes correspond to the field count (data) you are training the model with - a 1:1 relationship. The next layer in the diagram is the hidden layer in the center. It is connected in lots of ways to both the input and output nodes. The hidden nodes act like the neurons on the brain firing and not firing based on the input stimuli. The ability to fire is encoded in the hidden weighting that the neuron possesses and on a type of activation function that the neron follows (defined at setup). Finally we have an output layer which is essentially the prediction, each node corresponds to a real world value. When the model is setup, the nodes will be assigned some random weights and paths random biases. Once we start training the model these weights get updated as data is propegated through the network. We use the stochastic gradient descent optimization algorithm to adjust the weight of neurons by calculating the gradient of the loss function. Once we have sufficiently trained a the model, you can pass data through the network and the model will fire certain output neurons - your prediction.</p>
+                <p>
+                    Neural networks are systems made up of a number of simple, highly interconnected processing elements which process information idependantly in response to external inputs. Artifical neural networks have been created loosly modelled on the brain, loosely because brains are connected in much more exotic ways and with a lot more "neurons" - the processing elements. An animal brain typically consists of billions of neurons while our modelled networks maybe consist of 1-thousends of nodes which is significantly less, the sheer number of neurons in the brain capture emerging behaviour much better than our computer counter-parts.
+                </p>
+                <p>
+                    ANNs are made up of a number of nodes connected in layers. Each node has an activation function which determins if the node is lit up or not. As can be seen in the diagram, we have at least 3 layers to a network, the input layer which has a count of the number of values going into the network, the hidden layers in the middle which is highly connected to both the input and output layer and finally the output layer which is a count of the total possible outputs - yes or no would be 1 output node where 0 represented no and 1 represented yes. The input and output layers work better when the value has been normalized - is between 0 & 1). It is possible to have any amount of hidden layers between the input and the output, in the diagram we have 1 layer, with additional layers (and additional neurons) there will be an increase in time taken to traverse the network. The hidden layers are where the actual processing in the network is done. The hidden layer acts as a black box to us the user as we do not get to see the values held by each neuron and the patterns they fire in, we only see the output nodes fired based on inputs.
+                </p>
                 <figure class="intext-padding">
                     <a href="../images/blog-main-images/nn-diagram.png">
                         <img src="../images/blog-main-images/nn-diagram.png" alt="" class="img-responsive auto-margin" />
                     </a>
                 </figure>
-                <p>To train a network we need data, not only that but we need normalized data in the form of a decimal (between 0-1). The output will be in this same format, this can be used as a confidence (%). In the following section we will see how to format data so we are able to propegate it through a network.</p>
-                <p>Now we have gone over the basics, i am going to show you a real world example using C#. We will use the Encog Nuget package for this example: <a href="https://www.heatonresearch.com/encog/">Encog</a></p>
-                <p>Below is some data to train the model with (raw)</p>
+                <p>
+                    The data entering a neural network via the input layer needs to be in a correct format to help with accuracy, we cannot just give it full strings. As said above we want to normalize the data by putting it between 0 and 1. If a column of data has string data, we can expand that one column out to the distinct count possible string values found in that column. Then for each row, the new set of columns will be marked with 0 & 1 respective to the string value held in the original column.
+                </p>
+                <p>
+                    The trainer for the network contains a set of rules that when presented with complex inputs, it traverses across the network and updates the weights on the hidden layer/s neurons connections. The patterns in the inputs get recorded in the weightings and are essentially remebered, this is process is usually back propagation (performing gradient descent). Our example below is using resilient propagation which is compared to back propegation <a class="inline-block" href="https://ieeexplore.ieee.org/document/6663160">here</a>. When updating these weightings the network makes a guess of what it thinks is the correct output and is then compares it to the true result, ajustments are made based on this to try to line up the differences.
+                </p>
+                <p>
+                    Each neuron has an activation function which helps stabalize the propagation, you can set the neurons with a number of different activation functions better explained <a class="inline-block href="https://towardsdatascience.com/activation-functions-and-its-types-which-is-better-a9a5310cc8f">here</a>.
+                </p>
+                <p>
+                    Once a network has been trained to a sufficiant level, predictions can be made. The act of testing a network is done with forward propagation which means that the weightings will not be updated by showing it new input patterns but will travel through the network and give an output reading. This output reading is in the form of an array of confidences, all of the possible outputs with a 0-1 value assigned to it.
+                </p>
+                <p>Below is some data to train the model with (raw). I recreated a dataset that i saw used as an exmaple a while ago, the gist of it is when its over a certain temparature and not raining or if its snowing and its cold enough, the output will be to play. The two known columns are "temparature" and "weather description" and the output column is "plays outside or not"</p>
                 @Html.Partial("_NeuralNetworkDataMethod")
                 <p>The data needs to be formatted and between 0-1. Below we take all the distinct values for weather and turn them into columns. If the row has the value that corresponds to a column, the value will be 1 otherwise it will be zero. For the temp.</p>
                 @Html.Partial("_NeuralNetworkFormatMethod")
@@ -43,7 +57,7 @@
                 @Html.Partial("_NeuralNetworkTestMethod")
                 <p>Below is the method that combines all of above.</p>
                 @Html.Partial("_NeuralNetworkRunMethod")
-                <p>Try the code for yourself:</p>
+                <p>To save on processing power my end, I am only training to max 20,000 iterations. You can run the model below.</p>
             </div>
             <div class="model-container">
                 <div id="output">
@@ -81,3 +95,4 @@
 }
 
 @Scripts.Render("~/Scripts/ann.js")
+@Scripts.Render("~/Scripts/code-block.js")

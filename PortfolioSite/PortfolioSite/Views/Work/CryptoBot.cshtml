@@ -13,12 +13,14 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a bot that crawls Binance data to record new listing data.</p>
-                    <p>If the value increase of the listing is over a certain amount, the bot posts to a Telegram channel.</p>
+                    <p>This is a bot that crawls Binance data to record new listing data and buy off the back of it - an experiment. At the moment the buy isn't used because i am in the collecting data stage. Instead of firing the buy function, i am listening to the changes in the coin and storing the data in a MS SQL database.</p>
+                    <p>If the value increase of the listing is over a certain amount, the bot posts to a Telegram channel so i am aware of whats going on. If this shows any promising data, the telegram interaction will get significantly more complicated as i will need to add in web hooks for the bot to make descisions in response to my responses.</p>
+                    <p>The app is a console application at the moment, if this shows any promising data i will turn it into a Azure web job to run in the background.</p>
                     <p>
                         <strong>Details</strong><br />
                         Console App C#
-                        .NET Framework 4.5.2
+                        .NET Framework 4.5.2 &
+                        MS SQL Database
                     </p>
                 </section>
             </div>
@@ -27,26 +29,25 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">This is the current output when the application is listening to Binance (scraping). The static binder error is because of the sentiment analysis library i have installed (nuget) where i also run it on the message to get that little bit of extra data - possitive, negative or neutral.</p>
                     <a href="~/images/work-images/back-listeners.png" class="pointer">
                         <img src="~/images/work-images/back-listeners.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
-                    <a href="~/images/crypto-bot/adding-listing.png" class="pointer">
-                        <img src="~/images/crypto-bot/adding-listing.png" alt="" class="img-responsive" />
-                    </a>
-                </li>
-                <li>
+                    <p class="left-align">This code snippit shows what happens when the application is listening.</p>
                     <a href="~/images/crypto-bot/vs-frame.png" class="pointer">
                         <img src="~/images/crypto-bot/vs-frame.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">After the app has run through a page (which it is currently set to loop). The application can be configured to go back as many pages as required but only add and monitor new listings.</p>
                     <a href="~/images/crypto-bot/run.png" class="pointer">
                         <img src="~/images/crypto-bot/run.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This code snippit shows how to make transactions via my Binance account for if or when the time is right.</p>
                     <a href="~/images/crypto-bot/vs-frame2.png" class="pointer">
                         <img src="~/images/crypto-bot/vs-frame2.png" alt="" class="img-responsive" />
                     </a>
@@ -55,4 +56,4 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

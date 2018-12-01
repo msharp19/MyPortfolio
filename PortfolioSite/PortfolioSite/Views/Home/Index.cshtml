@@ -8,7 +8,7 @@
             <article role="pge-title-content">
                 <header role="work-title">
                     <h2><span>Matt Sharp</span>Portfolio</h2>
-                    <a class="proj-url" href="https://github.com/msharp19/MattSharpsPortfolio">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a>
+                    <a class="proj-url" href="https://github.com/msharp19/MyPortfolio">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a>
                 </header>
             </article>
         </section>
@@ -61,7 +61,7 @@
                     <figure class="effect-oscar">
                         <div class="post-date url-exists url-green">
                             <i class="fa fa-check lock-size"></i>
-                            Private URL
+                            Public URL
                         </div>
                         <img src="~/images/work/presale.png" alt="" class="img-responsive" />
                         <figcaption class="text-center">
@@ -101,9 +101,9 @@
                 </li>
                 <li>
                     <figure class="effect-oscar">
-                        <div class="post-date url-exists url-green">
+                        <div class="post-date url-exists url-red">
                             <i class="fa fa-check lock-size"></i>
-                            Public URL
+                            Private URL
                         </div>
                         <img src="~/images/work/invoice.jpg" alt="" class="img-responsive" />
                         <figcaption class="text-center">
@@ -199,6 +199,7 @@
                                 <h2 class="figure-item">Video<span> Chat</span></h2>
                                 <p>Live feed via UDP</p>
                             </div>
+                            @Html.ActionLink("View More", "Project", "Work", new { project = "VideoChat" }, new { @class = "work-item" })
                         </figcaption>
                     </figure>
                 </li>
@@ -206,7 +207,7 @@
                     <figure class="effect-oscar">
                         <div class="post-date url-exists url-green">
                             <i class="fa fa-check lock-size"></i>
-                            Private URL
+                            Public URL
                         </div>
                         <img src="~/images/work/contract.jpg" alt="" class="img-responsive" />
                         <figcaption class="text-center">
@@ -246,4 +247,4 @@
 
 @Scripts.Render("~/Scripts/js/jquery.min.js")
 @Scripts.Render("~/Scripts/home.js")
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

@@ -59,6 +59,9 @@
       <HintPath>..\packages\encog-dotnet-core.3.4.0\lib\encog-core-cs.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ErrorHandlerMvc, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ErrorHandlerMvc.1.1.5\lib\net451\ErrorHandlerMvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -227,6 +230,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -254,13 +258,13 @@
     <Content Include="CNNModel\model.mod" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\component.css" />
-    <Content Include="Content\css\font-awesome.min.css" />
-    <Content Include="Content\css\normalize.css" />
-    <Content Include="Content\css\responsive.css" />
-    <Content Include="Content\css\set2.css" />
-    <Content Include="Content\css\style.css" />
+    <Content Include="Content\component.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\normalize.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\set2.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -11629,6 +11633,8 @@
     <Content Include="images\training-set\split %288%29.rar" />
     <Content Include="images\training-set\split %289%29.rar" />
     <Content Include="images\training-set\split.rar" />
+    <None Include="Properties\PublishProfiles\MattSharpsPortfolio - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\MattSharpsPortfolio - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cnn.js" />
     <Content Include="Scripts\code-block.js" />
@@ -11676,7 +11682,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -11687,7 +11695,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -11739,9 +11747,11 @@
     <Content Include="Views\Shared\_CNNCreateModelMethod.cshtml" />
     <Content Include="Views\Shared\_CNNTrainMethod.cshtml" />
     <Content Include="Views\Shared\_CNNTestMethod.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\css\" />
     <Folder Include="images\blog-images\" />
   </ItemGroup>
   <ItemGroup>
@@ -11768,6 +11778,10 @@
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{D4972AC3-1C2B-4BB0-81D9-8BD5E96A938E}</Project>
       <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TelegramMessenger\TelegramMessenger.csproj">
+      <Project>{360D9A0F-06D8-479B-954E-E1CCC0D469D9}</Project>
+      <Name>TelegramMessenger</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

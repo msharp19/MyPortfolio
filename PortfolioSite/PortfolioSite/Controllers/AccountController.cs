@@ -15,6 +15,7 @@ namespace PortfolioSite.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        /*
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -481,5 +482,7 @@ namespace PortfolioSite.Controllers
             }
         }
         #endregion
+
+    */
     }
 }

@@ -13,6 +13,7 @@ namespace PortfolioSite.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        /*
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -384,6 +385,6 @@ namespace PortfolioSite.Controllers
             Error
         }
 
-#endregion
+#endregion*/
     }
 }

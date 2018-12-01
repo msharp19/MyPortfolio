@@ -19,15 +19,16 @@ using System.Web.Routing;
 
 namespace PortfolioSite.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : Controller
     {
-        private MsportfolioEntities entities = new MsportfolioEntities();
+        private MsportfolioEntities _entities = new MsportfolioEntities();
         private ICommentService _commentService;
         private IMapper _mapper;
 
         public BlogController()
         {
-            _commentService = new CommentService(entities);
+            _commentService = new CommentService(_entities);
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Comment, CommentModel>()
@@ -36,11 +37,13 @@ namespace PortfolioSite.Controllers
             _mapper = config.CreateMapper();
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpPost]
         public ActionResult AddComment(BlogPost blogName, string userName, string email, string comment, int? replyId)
         {
             var isValid = this.IsCaptchaValid("Captcha is not valid");
@@ -66,6 +69,7 @@ namespace PortfolioSite.Controllers
             };
         }
 
+        [HttpGet]
         public ActionResult BlogPost(BlogPost blogPost, string userName, string email, string comment)
         {
             var model = new BlogItemModel(blogPost);
@@ -87,6 +91,7 @@ namespace PortfolioSite.Controllers
             return model;
         }
 
+        [HttpPost]
         public ActionResult RunModel(string connectionId)
         {
             try
@@ -141,6 +146,7 @@ namespace PortfolioSite.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult PredictMnist(string imageRaw)
         {
             try
@@ -166,6 +172,20 @@ namespace PortfolioSite.Controllers
                     JsonRequestBehavior = JsonRequestBehavior.DenyGet
                 };
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_entities != null)
+                {
+                    _entities.Dispose();
+                    _entities = null;
+                }
+                _commentService = null;
+            }
+            base.Dispose(disposing);
         }
     }
 }

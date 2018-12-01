@@ -13,12 +13,14 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is an MVC admin site made to support the Chrome extension.</p>
-                    <p>You are able to manage everything from the extension like activity, transactions, user details and statistics of usage on the network</p>
+                    <p>This is an MVC admin site made to support my <a href="../Work/Project?project=ChromeExtension">Chrome extension</a>. It is still unfinished as priority is now my token presale site. This serves as a taster of what is to come (displayed on presale site).</p>
+                    <p>You are able to manage everything from the extension like activity, transactions, user details and statistics of usage on the network. I plan to extend the current WebAPI (for the extension) backend to allow for serving statistics from direct calls.</p>
+                    <p>Current implementation requires <a href="https://metamask.io/">Metamask</a> to be installed to interact with blockchain as i use the injected Web3 Javascript object - this is going to change.</p>
                     <p>
                         <strong>Details</strong><br />
                         MVC Razor C#
-                        .NET Framework 4.5.2
+                        .NET Framework 4.5.2 &
+                        Microsoft SQL Server
                     </p>
                 </section>
             </div>
@@ -27,26 +29,31 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">This is the login page where users sign in.</p>
                     <a href="~/images/work-images/mo-login.png" class="pointer">
                         <img src="~/images/work-images/mo-login.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is the dashboard where user can monitor activity.</p>
                     <a href="~/images/mo-admin/home.png" class="pointer">
                         <img src="~/images/mo-admin/home.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">I have added the ability to mine the coin via helping me train models - UI subject to change.</p>
                     <a href="~/images/mo-admin/mining.png" class="pointer">
                         <img src="~/images/mo-admin/mining.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">I have added an online wallet but the user can also download the desktop version if he/she doesnt want to hold any details online.</p>
                     <a href="~/images/mo-admin/wallet.png" class="pointer">
                         <img src="~/images/mo-admin/wallet.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">The sample code below shows the controller method responsible for serving the Dashboard page.</p>
                     <a href="~/images/mo-admin/vs-frame.png" class="pointer">
                         <img src="~/images/mo-admin/vs-frame.png" alt="" class="img-responsive" />
                     </a>
@@ -55,4 +62,4 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

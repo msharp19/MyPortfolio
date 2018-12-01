@@ -14,6 +14,7 @@
                     <h2><span>Hi</span> Please feel free to message me - details below</h2>
                 </header>
                 <p><a href="tel:@Model.PhoneNumber"><i class="fa fa-phone" aria-hidden="true"></i> @Model.PhoneNumber (UK)</a><a href="mailto:@Model.Email"><i class="fa fa-envelope" aria-hidden="true"></i> @Model.Email</a></p>
+                <p><a href="https://en.wikipedia.org/wiki/Kampot_Province"><i class="fa fa-map-marker" aria-hidden="true"></i> Kampot, Cambodia</a></p>
             </article>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -27,14 +28,14 @@
             <form class="email-form">
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                        <input name="name" id="name-val" type="text" placeholder="Whats your name" value="@Model.FormName">
+                        <input name="name" id="name-val" type="text" placeholder="Whats your name*" value="@Model.FormName">
                         <span id="name-val" class="validation-email">
                             <i class="fa fa-check green" style="display:none;"></i>
                             <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
                         </span>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                        <input name="email" id="email-val" type="email" placeholder="Whats your email" value="@Model.FormEmail">
+                        <input name="email" id="email-val" type="email" placeholder="Whats your email*" value="@Model.FormEmail">
                         <span id="email-val" class="validation-email">
                             <i class="fa fa-check green" style="display:none;"></i>
                             <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
@@ -56,7 +57,7 @@
                     </div>
                     <div class="button-container">
                         <input id="send-email" name="" class="inline" type="button" value="Send Telegram">
-                        <span class="spinner"><img id="email-load" class="inline load-margin none" width="55" height="55" src="~/images/spinner.gif" alt="" /></span>
+                        <span class="spinner" style="display:none;"><img id="email-load" class="inline load-margin none" width="55" height="55" src="~/images/spinner.gif" alt="" /></span>
                     </div>
                 </div>
                 <div id="simple-msg"></div>

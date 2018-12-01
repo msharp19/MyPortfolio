@@ -7,19 +7,18 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-4">
                 <header role="work-title">
-                    <h2>MO-ETH Wallet</h2>
+                    <h2>Auto Pay Web-Job</h2>
                     <a href="#">Project URL: Private <i class="fa fa-lock" aria-hidden="true"></i></a>
-                    <!--<i class="fa fa-external-link" aria-hidden="true"></i>-->
                 </header>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a WinForm Desktop application where users can manage/swap between Morarity (My ICO) & Ethereum and make transactions.</p>
-                    <!--<p></p>-->
+                    <p>This is a simple webjob that is run once a week (hosted on Azure). It allocates random amounts of my ERC20 token to active users, this is not currently running but is ready to run.</p>
                     <p>
                         <strong>Details</strong><br />
                         Winform C#
                         .NET Framework 4.5.2
+                        MS Sql Server
                     </p>
                 </section>
             </div>
@@ -28,11 +27,13 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">This is the method called each day, the bulk of the work is done in the service method provided below.</p>
                     <a href="~/images/work-images/web-job.png" class="pointer">
                         <img src="~/images/work-images/web-job.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This code snippit is the bulk of the work done when the job is called. It is the algorithm to allocate random amounts of funds to users.</p>
                     <a href="~/images/web-job/payment.png" class="pointer">
                         <img src="~/images/web-job/payment.png" alt="" class="img-responsive" />
                     </a>
@@ -41,4 +42,4 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

@@ -1,8 +1,7 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
-
-@{
+﻿@{
     ViewBag.Title = "Page Not Found";
 }
+
 
 <div class="hold-tight">
     <div id="notfound">
@@ -18,3 +17,7 @@
     </div>
     <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </div>
+
+@* Error page must be longer than 512 bytes for IE and Chrome to show it. 
+   So add padding in case we're short. *@
+@(new string(' ', 512))

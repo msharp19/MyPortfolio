@@ -13,8 +13,9 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a WinForm Desktop application where users can connect via video stream to each others IP (a bit of fun)</p>
-                    <p>The chat sends data in packets via UDP</p>
+                    <p>This is a WinForm Desktop application where users can connect via video stream to each others IP (a bit of fun). The user acts as both a client and server when running this application, serving a stream of data and recieving a stream to the connected client.</p>
+                    <p>The chat sends data in packets via UDP as it isn't too important on reciving every packet this also means it is good for speed (compared to using TCP). I made a start to include audio but i had a play around and couldn't get it to work as seemlessly as the video so i have had to put the development of that on hold until i have some more time to have a mess about.</p>
+                    <p>The library used for webcam image capture is <a href="http://www.aforgenet.com/">AForge</a>, no library is used for the packet sending, this is custom.</p>
                     <p>
                         <strong>Details</strong><br />
                         Winform C#
@@ -27,22 +28,31 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">This shows a series of real time images taken from the users webcam (before connection).</p>
                     <a href="~/images/video-link/before-connect.png" class="pointer">
                         <img src="~/images/video-link/before-connect.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">Below I have connected the stream to my own IP: 127.0.0.1</p>
                     <a href="~/images/video-link/after-connect.png" class="pointer">
                         <img src="~/images/video-link/after-connect.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
-                    <a href="~/images/video-link/vs-frame.png" class="pointer">
-                        <img src="~/images/video-link/vs-frame.png" alt="" class="img-responsive" />
+                    <p class="left-align">This code snippit shows how the video frame (image) is handled when recieved. It is recieved as an array of bytes which is converted to an image using the memory stream.</p>
+                    <a href="~/images/video-link/vs-frame2.png" class="pointer">
+                        <img src="~/images/video-link/vs-frame2.png" alt="" class="img-responsive" />
+                    </a>
+                </li>
+                <li>
+                    <p class="left-align">This code snippit shows the method listening for new video data.</p>
+                    <a href="~/images/video-link/vs-frame3.png" class="pointer">
+                        <img src="~/images/video-link/vs-frame3.png" alt="" class="img-responsive" />
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

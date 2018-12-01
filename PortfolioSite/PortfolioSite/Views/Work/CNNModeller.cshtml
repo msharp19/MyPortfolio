@@ -14,8 +14,9 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a WinForm Desktop application to train Convolutional neural networks to recognize images.</p>
+                    <p>This is a WinForm Desktop application to train convolutional neural networks to recognize images.</p>
                     <p>You are able to produce different types of models using different sampling techniques and pre-processing. There is a real time output to give the user information about the progress.</p>
+                    <p>This works well but the CNN library needs to be updated from <a href="https://github.com/cbovar/ConvNetSharp">ConvNetSharp</a> to <a href="https://github.com/jdermody/brightwire">BrightWire</a> and make use of the GPU.</p>
                     <p>
                         <strong>Details</strong><br />
                         Winform C#
@@ -28,36 +29,43 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">The main control panel on init.</p>
                     <a href="~/images/cnn/cnn-preload.png" class="pointer">
                         <img src="~/images/cnn/cnn-preload.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is the modeller running with 2 outputs defined by the number of folders loaded in the left hand corner (Cats & Dogs). The model is built in the right hand corner and when run, the output is displayed in the bottom window in real-time.</p>
                     <a href="~/images/cnn/cnn-run.png" class="pointer">
                         <img src="~/images/cnn/cnn-run.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">The real-time tab shows statistics about the run.</p>
                     <a href="~/images/cnn/cnn-run2.png" class="pointer">
                         <img src="~/images/cnn/cnn-run2.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is a default model in the code (loaded on init).</p>
                     <a href="~/images/cnn/cnn1.png" class="pointer">
                         <img src="~/images/cnn/cnn1.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">You are able to force stop and output the model at any time.</p>
                     <a href="~/images/cnn/cnn-stop.png" class="pointer">
                         <img src="~/images/cnn/cnn-stop.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">There is a model tester window found under the "Model Management" menu item.</p>
                     <a href="~/images/cnn/bts.png" class="pointer">
                         <img src="~/images/cnn/bts.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is sample code of the Tester window where we test images provided on an existing model.</p>
                     <a href="~/images/cnn/bts2.png" class="pointer">
                         <img src="~/images/cnn/bts2.png" alt="" class="img-responsive" />
                     </a>
@@ -66,5 +74,5 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")
 <!--https://codepen.io/JonasBadalic/pen/PwWXqg-->

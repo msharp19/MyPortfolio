@@ -1,31 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using TeleSharp.TL;
-using TeleSharp.TL.Messages;
-using TLSharp.Core;
 using Utils;
 
 namespace TelegramMessenger
 {
     public class MessageClient
     {
-        public async static void SendMessage(string message)
+        public static void SendMessageAsync(string message)
         {
             var configReader = ConfigReader.GetInstance();
-            var client = new TelegramClient(configReader.TelegramAPIID, configReader.TelegramAPIHash);
-            await client.ConnectAsync();
-            //get user dialogs
-            var dialogs = (TLDialogsSlice)await client.GetUserDialogsAsync();
-            //find channel by title
-            var chat = dialogs.Chats
-              .Where(c => c.GetType() == typeof(TLChannel))
-              .Cast<TLChannel>()
-              .FirstOrDefault(c => c.Title == configReader.TelegramChannelTitle);
-            //send message
-            await client.SendMessageAsync(new TLInputPeerChannel() { ChannelId = chat.Id, AccessHash = chat.AccessHash.Value }, message);
+            string urlString = "https://api.telegram.org/bot{0}/sendMessage?chat_id={1}&text={2}";
+            urlString = String.Format(urlString, $"{configReader.TelegramAPIID}:{configReader.TelegramAPIHash}",
+                configReader.TelegramChannelTitle, message);
+            WebRequest request = WebRequest.Create(urlString);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Azure.Services.AppAuthentication;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace Utils
 {
     public class ConfigReader
     {
+        /*  
+        https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest
+         */
         private static ConfigReader _reader { get; set; }
         private static KeyVaultClient _kv;
 
@@ -25,7 +29,7 @@ namespace Utils
 
         public string GetSecret(string name)
         {
-            var secret = _kv.GetSecretAsync("https://rateit-kv.vault.azure.net", name).Result;
+            var secret = _kv.GetSecretAsync(ConfigurationManager.AppSettings["KeyVaultURL"], name).Result;
             return secret.Value;
         }
 

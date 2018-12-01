@@ -13,7 +13,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a WinForm Desktop application where images can be copied from cache for model training</p>
+                    <p>This is a WinForm Desktop application where images can be copied from cache in bulk, quickly and efficiently. This is done by selecting a webpage, gathering all the images from cache, and parsing the load more (or what ever it is called) button. The selection of the load more button is chosen on the configuration tab. Sometimes search engines have load on scroll to the end, i take that into account and fire the scrolling at random intervals in conjunction with the search for button. The images are then taken from the cache, identified by the file headers. This can build quite large datasets, quite quickly.</p>
                     <p>
                         <strong>Details</strong><br />
                         Winform C#
@@ -26,21 +26,31 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">This is the configuration screen to set the load more identifier. I have set 3 ways to find the button based on a number of search engine load more buttons.</p>
+                    <a href="~/images/work-images/auto-brows.png" class="pointer">
+                        <img src="~/images/work-images/auto-brows.png" alt="" class="img-responsive" />
+                    </a>
+                </li>
+                <li>
+                    <p class="left-align">This is the browser where you can inspect the page to find the button identifier.</p>
                     <a href="~/images/copy/cb1.png" class="pointer">
                         <img src="~/images/copy/cb1.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is sample code that shows how the inspect is outputted on the form.</p>
                     <a href="~/images/copy/cb2.png" class="pointer">
                         <img src="~/images/copy/cb2.png" alt="" class="img-responsive" />
                     </a>
                 </li>
-                <li>
-                    <a href="~/images/copy/cb3.png" class="pointer">
+                <li class="full-length">
+                    <p class="text-center">This is shown when the system is copying.</p>
+                    <a href="~/images/copy/cb3.png" class="pointer ">
                         <img src="~/images/copy/cb3.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">Below was the previous version of the cache copy. You setup the folders then get the application to listen, open up the respective browser you have configured to (in the example FireFox) and scroll around.</p>
                     <a href="~/images/copy/cb4.png" class="pointer">
                         <img src="~/images/copy/cb4.png" alt="" class="img-responsive" />
                     </a>
@@ -49,4 +59,4 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

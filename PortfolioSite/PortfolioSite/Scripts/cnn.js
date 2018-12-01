@@ -41,7 +41,6 @@
 }());
 
 function setupCanvas(ctx) {
-    /* Drawing on Paint App */
     ctx.lineWidth = 20;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
@@ -90,3 +89,47 @@ $("#predict").on("click", function () {
         }
     });
 });
+
+window.onload = function () {
+
+    //Grid image
+    function drawImage(id, imgId, x, y) {
+        var c = document.getElementById(id);
+        var ctx = c.getContext("2d");
+        var img = document.getElementById(imgId);
+        ctx.drawImage(img, 0, 0, x, y);
+    }
+
+    function fillGrid() {
+        var canvas = document.getElementById("rep-img-hidden");
+        var ctx = canvas.getContext("2d");
+        var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var data = imgData.data;
+        var tableGrid = $(".number-grid");
+        var currentRow = "<tr>";
+        var currentColumnCount = 0;
+        var reset = false;
+        for (var i = 0; i < data.length; i += 4) {
+            var red = data[i];
+            var green = data[i + 1];
+            var blue = data[i + 2];
+            var alpha = data[i + 3];
+            var avg = Math.ceil((green + blue + red) / 3);
+
+            if (currentColumnCount >= 19) {
+                currentRow += "</tr>";
+                tableGrid.append(currentRow);
+                currentRow = "<tr>";
+                currentColumnCount = 0;
+                reset = true;
+            }
+            else {
+                reset = false;
+                currentRow += ("<td>" + avg + "</td>");
+            }
+            if(!reset) currentColumnCount++;
+        }
+    }
+    drawImage("rep-img-hidden", "grid-img-hidden", 20,20);
+    fillGrid();
+};

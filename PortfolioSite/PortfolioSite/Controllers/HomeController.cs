@@ -8,16 +8,12 @@ using System.Web.Mvc;
 
 namespace PortfolioSite.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            
             return View();
         }
     }

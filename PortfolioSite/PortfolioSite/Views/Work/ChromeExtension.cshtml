@@ -13,11 +13,11 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a Chrome Extension where a user can chat page to page.</p>
-                    <p>There is a Web API running in the background to serve hte data to the JS chrome extension.</p>
+                    <p>This is a Chrome Extension where a user can chat page to page, each chat room is actually based on the base URL of the site. Users can also rate the site he/she is commenting on and see what others have done too. The user can give MoC (credit version of ERC20 token) as tips to each other to help drive an incentive for adoption. Mo represents the worth of the network, initially pumped by a pre-sale providing incentive to growth and driving rich content.</p>
+                    <p>This is an application of two parts, there is a Web API running in the background to serve html data and a JS script running on Chrome/Brave. This is in active development and is the third version of the UI.</p>
                     <p>
                         <strong>Details</strong><br />
-                        Chrome Extension JS
+                        Chrome Extension JS &
                         C# Web API 2.0
                         .NET Framework 4.5.2
                     </p>
@@ -27,42 +27,47 @@
         <div class="clearfix"></div>
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
-                <li>
+                <li class="full-length">
+                    <p class="">The main page to the extension.</p>
                     <a href="~/images/work-images/extension.png" class="pointer">
                         <img src="~/images/work-images/extension.png" alt="" class="img-responsive" />
                     </a>
                 </li>
-                <li>
+                <li class="full-length">
+                    <p class="">A snippit of code from the extension manifest. This is where all the dependencies, meta data and permissions about the application are found/defined.</p>
                     <a href="~/images/extension/js-frame.png" class="pointer">
                         <img src="~/images/extension/js-frame.png" alt="" class="img-responsive" />
                     </a>
                 </li>
-                <li>
+                <li class="full-length">
                     <a href="~/images/extension/ex1.png" class="pointer">
                         <img src="~/images/extension/ex1.png" alt="" class="img-responsive" />
                     </a>
                 </li>
-                <li>
+                <li class="full-length">
                     <a href="~/images/extension/ex2.png" class="pointer">
                         <img src="~/images/extension/ex2.png" alt="" class="img-responsive" />
                     </a>
                 </li>
-                <li>
+                <li class="full-length">
                     <a href="~/images/extension/ex3.png" class="pointer">
                         <img src="~/images/extension/ex3.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">For development, the unpacked project is loaded in the Chome://extensions section. You can see in the browser bar to the right of the search box, the icon representing the extension (MO icon).</p>
                     <a href="~/images/extension/ex4.png" class="pointer">
                         <img src="~/images/extension/ex4.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This JS code snippit shows how the extension is embedded in the DOM at runtime.</p>
                     <a href="~/images/extension/js-frame2.png" class="pointer">
                         <img src="~/images/extension/js-frame2.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This c# code snippit is the method that returns the sub comments for the comment section (when load more is pressed).</p>
                     <a href="~/images/extension/vs-frame.png" class="pointer">
                         <img src="~/images/extension/vs-frame.png" alt="" class="img-responsive" />
                     </a>
@@ -71,4 +76,4 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

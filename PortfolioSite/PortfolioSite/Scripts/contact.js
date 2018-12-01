@@ -1,14 +1,12 @@
 ﻿$(function () {
-
     var isSubmittingOrderForm = false;
-
     $("#send-email").on("click", function () {
         if (isSubmittingOrderForm === false) {
             isSubmittingOrderForm === true;
             var isClean = checkForEmptyFields();
             var name = $("#name-val").val();
             var email = $("#email-val").val();
-            var comment = $("#comments").text();
+            var comment = $("#comments").val();
             var data = { name: name, email: email, message: comment, CaptchaDeText: $("#CaptchaDeText").val(), CaptchaInputText: $("#CaptchaInputText").val() };
             if (isClean === true) {
                 toggle();

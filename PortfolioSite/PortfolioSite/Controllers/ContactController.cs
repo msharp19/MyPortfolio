@@ -10,12 +10,13 @@ using System.Web.Routing;
 using CaptchaMvc.Attributes;
 using CaptchaMvc.Infrastructure;
 using TelegramMessenger;
+using System.Threading.Tasks;
 
 namespace PortfolioSite.Controllers
 {
+    [AllowAnonymous]
     public class ContactController : Controller
     {
-        [AllowAnonymous]
         [HttpGet]
         public ActionResult Contact(string email, string name, string message)
         {
@@ -32,14 +33,13 @@ namespace PortfolioSite.Controllers
             return View(model);
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public ActionResult Message(string email, string name, string message)
         {
             var isValid = this.IsCaptchaValid("Captcha is not valid");
             if (isValid)
             {
-                MessageClient.SendMessage($"From:{email}({name})-{message}");
+                MessageClient.SendMessageAsync($"From:{email}({name})-{message}");
                 return new JsonResult()
                 {
                     Data = new { Status = "Success", Message = "Thanks for the message!", Url = Url.Action("Contact", "Contact", null, Request.Url.Scheme) },

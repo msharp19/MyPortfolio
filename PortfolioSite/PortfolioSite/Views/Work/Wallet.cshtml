@@ -14,12 +14,13 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a WinForm Desktop application where users can manage/swap between Morarity (My ICO) & Ethereum and make transactions.</p>
-                    <!--<p></p>-->
+                    <p>This is a WinForm Desktop application where users can manage/swap between Morarity (My ICO) & Ethereum and make transactions. It is still in development but is next in line after the real presale site has been made. I have used the <a href="https://github.com/Nethereum/Nethereum">Nethereum</a> library to interact with the Ethereum and ERC20 blockchains and <a href="https://infura.io/">Infura</a> as the endpoint for the Web3 object provided by the Nethereum.</p>
+                    <p>No details are stored in a DB (all locally - encrypted), the benifit of having a Desktop application.</p>
                     <p>
                         <strong>Details</strong><br />
                         Winform C#
-                        .NET Framework 4.5.2
+                        .NET Framework 4.5.2 &
+                        Microsoft SQL Server
                     </p>
                 </section>
             </div>
@@ -28,26 +29,31 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">As can be seen below, the UI is made up using Visual Studios drag & drop Winform Editor. I should note, you see the tabs below in the d&d editor but when the application is run, these are hidden.</p>
                     <a href="~/images/wallet/vs-frame.png" class="pointer">
                         <img src="~/images/wallet/vs-frame.png" alt="" class="img-responsive thumbnail" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">I have added the ability to swap between my ERC20 token and an in app credit which is free to send (Mo/Eth <> MoC).</p>
                     <a href="~/images/wallet/swap-coins.png" class="pointer">
                         <img src="~/images/wallet/swap-coins.png" alt="" class="img-responsive thumbnail" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is the security tab where the user stores all the details for the app to run. These are stored encrypted locally (on a file).</p>
                     <a href="~/images/wallet/login-details.png" class="pointer">
                         <img src="~/images/wallet/login-details.png" alt="" class="img-responsive thumbnail" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is the transaction tab where the user can view all transactions.</p>
                     <a href="~/images/wallet/transactions.png" class="pointer">
                         <img src="~/images/wallet/transactions.png" alt="" class="img-responsive thumbnail" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">Some sample code from the application. It shows how to make a transaction and estimate the gas using Nethereum, it is part of the Bank class.</p>
                     <a href="~/images/wallet/bank.png" class="pointer">
                         <img src="~/images/wallet/bank.png" alt="" class="img-responsive thumbnail" />
                     </a>
@@ -56,4 +62,4 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")

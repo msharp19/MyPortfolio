@@ -6,14 +6,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Matt Sharps Portfolio</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/css/style.css")
-    @Styles.Render("~/Content/css/bootstrap.min.css")
-    @Styles.Render("~/Content/css/responsive.css")
-    @Styles.Render("~/Content/css/font-awesome.min.css")
-    @Styles.Render("~/Content/css/set2.css")
-    @Styles.Render("~/Content/css/normalize.css")
-    @Styles.Render("~/Content/css/component.css")
+    @Styles.Render("~/Content/")
+    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/responsive.css")
+    @Styles.Render("~/Content/font-awesome.min.css")
+    @Styles.Render("~/Content/set2.css")
+    @Styles.Render("~/Content/normalize.css")
+    @Styles.Render("~/Content/component.css")
     @Styles.Render("~/Content/toastr.css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/js/jquery.min.js")
@@ -27,11 +27,14 @@
                 <a href="../Home/Index" title="Matt Sharp"><img src="../images/logo-1.png" class="logo-size" title="Matt Sharp" alt="Matt Sharp" /></a>
             </h1>
             <nav role="header-nav" class="navy">
+                @{
+                    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+                }
                 <ul>
-                    <li class="nav-active">@Html.ActionLink("Work", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Blog", "Index", "Blog")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
+                    <li class="@(controllerName=="Home" || controllerName=="Work" ? "nav-active" : string.Empty)">@Html.ActionLink("Work", "Index", "Home")</li>
+                    <li class="@(controllerName=="About" ? "nav-active" : string.Empty)">@Html.ActionLink("About", "About", "About")</li>
+                    <li class="@(controllerName=="Blog" ? "nav-active" : string.Empty)">@Html.ActionLink("Blog", "Index", "Blog")</li>
+                    <li class="@(controllerName=="Contact" ? "nav-active" : string.Empty)">@Html.ActionLink("Contact", "Contact", "Contact")</li>
                 </ul>
             </nav>
         </div>
@@ -45,7 +48,7 @@
         <nav role="footer-nav">
             <ul>
                 <li>@Html.ActionLink("Work", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "About")</li>
                 <li>@Html.ActionLink("Blog", "Index", "Blog")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
             </ul>

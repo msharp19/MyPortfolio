@@ -13,7 +13,8 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a WinForm Desktop application where users can chat via the IRC protocol (a bit of fun)</p>
+                    <p>This is a WinForm Desktop application where users can chat via the IRC protocol (a bit of fun). The messages are only persisted by users in the chat, if someone drops out the messages are not stored so they will essentially disapear (granted they are not screen shotted). I have added in 256 bit AES encryption too so that noone will be able to decode my messages without a corresponding key.</p>
+                    <p>I use the <a href="https://github.com/ddevault/ChatSharp">ChatSharp</a> library to create my client.</p>
                     <p>
                         <strong>Details</strong><br />
                         Winform C#
@@ -26,21 +27,25 @@
         <div class="work-images grid">
             <ul class="grid-lod effect-2" id="grid">
                 <li>
+                    <p class="left-align">This is the login tab (displayed in the Visual Studio drag & drop editor) where details are supplied so we are able to connect to a server running the IRC protocol.</p>
                     <a href="~/images/irc/login.png" class="pointer">
                         <img src="~/images/irc/login.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">Below is the login tab at runtime.</p>
                     <a href="~/images/irc/login-2.png" class="pointer">
                         <img src="~/images/irc/login-2.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is the chat window. The users in the room can be seen and is updated at real-time along with the messages.</p>
                     <a href="~/images/irc/chat.png" class="pointer">
                         <img src="~/images/irc/chat.png" alt="" class="img-responsive" />
                     </a>
                 </li>
                 <li>
+                    <p class="left-align">This is a sample peice of code that is fired when a message has been added to the chat.</p>
                     <a href="~/images/irc/vs-frame.png" class="pointer">
                         <img src="~/images/irc/vs-frame.png" alt="" class="img-responsive" />
                     </a>
@@ -49,4 +54,4 @@
         </div>
     </div>
 </main>
-@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/style.css")
