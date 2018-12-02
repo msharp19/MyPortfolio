@@ -37,5 +37,9 @@ namespace Repositories
         {
             _entities.Entry(comment).State = System.Data.Entity.EntityState.Modified;
         }
+
+        public IEnumerable<Comment> GetCommentsByBlogId(int blogId){
+            return _entities.Comments.Where(x => x.BlogItemId == blogId);
+        }
     }
 }

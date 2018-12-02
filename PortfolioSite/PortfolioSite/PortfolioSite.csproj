@@ -107,10 +107,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=4.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.4.4.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -125,6 +129,7 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -271,10 +276,17 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\about-images\me.jpg" />
+    <Content Include="images\about-images\me2-orig.png" />
+    <Content Include="images\blog-main-images\cnn-diagram.png" />
     <Content Include="images\blog-main-images\cnn.png" />
     <Content Include="images\blog-main-images\conv.jpg" />
+    <Content Include="images\blog-main-images\mnist-change.png" />
     <Content Include="images\blog-main-images\network.jpg" />
     <Content Include="images\blog-main-images\model.jpg" />
+    <Content Include="images\blog-main-images\nn-diagram.png" />
+    <Content Include="images\blog-main-images\train-cnn-2.png" />
+    <Content Include="images\blog-main-images\train-cnn-3.png" />
+    <Content Include="images\blog-main-images\train-cnn.png" />
     <Content Include="images\cnn\bts.png" />
     <Content Include="images\cnn\bts2.png" />
     <Content Include="images\cnn\cnn-preload.png" />
@@ -308,11 +320,6 @@
     <Content Include="images\extension\js-frame2.png" />
     <Content Include="images\extension\vs-frame.png" />
     <Content Include="images\favicon.ico" />
-    <Content Include="images\home-images\image-1.jpg" />
-    <Content Include="images\home-images\image-2.jpg" />
-    <Content Include="images\home-images\image-3.jpg" />
-    <Content Include="images\home-images\image-4.jpg" />
-    <Content Include="images\home-images\image-5.jpg" />
     <Content Include="images\ico\contract.png" />
     <Content Include="images\img\img1-2.png" />
     <Content Include="images\img\img1.png" />
@@ -327,6 +334,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\mo-admin\home.png" />
     <Content Include="images\mo-admin\mining.png" />
+    <Content Include="images\mo-admin\vs-frame.png" />
     <Content Include="images\mo-admin\wallet.png" />
     <Content Include="images\my-logo.png" />
     <Content Include="images\pre-sale\pre-sale.png" />
@@ -11572,10 +11580,14 @@
     <Content Include="images\video-link\after-connect.png" />
     <Content Include="images\video-link\before-connect.png" />
     <Content Include="images\video-link\vs-frame.png" />
+    <Content Include="images\video-link\vs-frame2.png" />
+    <Content Include="images\video-link\vs-frame3.png" />
+    <Content Include="images\wallet\bank.png" />
     <Content Include="images\wallet\login-details.png" />
     <Content Include="images\wallet\make-transaction.png" />
     <Content Include="images\wallet\swap-coins.png" />
     <Content Include="images\wallet\transactions.png" />
+    <Content Include="images\wallet\vs-frame.png" />
     <Content Include="images\web-job\payment.png" />
     <Content Include="images\work-images\auto-brows.png" />
     <Content Include="images\work-images\back-listeners.png" />
@@ -11659,15 +11671,19 @@
     <Content Include="Scripts\js\bootstrap.min.js" />
     <None Include="Scripts\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\js\classie.js" />
+    <Content Include="Scripts\js\custom.js" />
+    <Content Include="Scripts\js\html5shiv.js" />
     <Content Include="Scripts\js\imagesloaded.js" />
     <Content Include="Scripts\js\jquery-1.10.2.js" />
     <Content Include="Scripts\js\jquery-1.10.2.min.js" />
     <None Include="Scripts\js\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\js\jquery.contact.js" />
     <Content Include="Scripts\js\jquery.validate.js" />
     <Content Include="Scripts\js\jquery.validate.min.js" />
     <Content Include="Scripts\js\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\layout.js" />
+    <Content Include="Scripts\js\maps.js" />
     <Content Include="Scripts\js\masonry.pkgd.min.js" />
     <Content Include="Scripts\js\modernizr-2.6.2.js" />
     <Content Include="Scripts\js\modernizr.custom.js" />
@@ -11748,6 +11764,7 @@
     <Content Include="Views\Shared\_CNNTrainMethod.cshtml" />
     <Content Include="Views\Shared\_CNNTestMethod.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Blog\_SubComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

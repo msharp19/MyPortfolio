@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 namespace PortfolioSite.Controllers
 {
     [AllowAnonymous]
+    [RoutePrefix("/Contract/")]
     public class ContactController : Controller
     {
         [HttpGet]

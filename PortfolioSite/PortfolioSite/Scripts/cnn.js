@@ -77,9 +77,6 @@ $("#predict").on("click", function () {
             }
             else {
                 outputErrorMessage(data.Message, "Error");
-                setTimeout(function () {
-                    window.location.assign(data.Url);
-                }, 1200);
             }
             toggle();
         },

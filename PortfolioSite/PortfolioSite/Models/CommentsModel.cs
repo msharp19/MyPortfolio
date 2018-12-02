@@ -13,6 +13,12 @@ namespace PortfolioSite.Models
         public string Username { get; set; }
         public string Email { get; set; }
         public string Comment { get; set; }
+        public int TotalCommentCount { get; set; }
+        public int ParentId { get; set; }
+        public int Level { get; set; }
+        public int PageNum { get; set; }
+        public int TotalPages { get; set; }
+        public int PerPage { get; set; }
 
         public CommentsModel()
         {

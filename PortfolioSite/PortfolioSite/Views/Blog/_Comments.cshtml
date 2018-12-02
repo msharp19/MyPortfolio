@@ -4,10 +4,15 @@
 <!-- Comments -->
 <div class="comments-pan">
     <h3>@Model.CommentCount Comments</h3>
+    @Html.Hidden("DisplayedComments", @Model.CommentCount)
     <ul class="comments-reply comments-main-box">
         @for (int i = 0; i < @Model.CommentCount; i++)
         {
             @Html.Partial("_Comment", @Model.Comments[i])
+        }
+        @if(@Model.TotalCommentCount > 10)
+        {
+            <li id="main-load-more" class="comment-action"><a class="text-center" href="loadMoreComments(null, @Model.Level, @(Model.PageNum+1))"><i class="fa caret-down inline"></i>Load More</a></li>
         }
     </ul>
     <!--Comment Form-->

@@ -11,6 +11,7 @@ namespace Repositories.Interfaces
     {
         Comment AddComment(Comment comment);
         IEnumerable<Comment> GetComments(string blogName);
+        IEnumerable<Comment> GetCommentsByBlogId(int blogId);
         IEnumerable<Comment> GetCommentsByParentId(int parentId);
         Comment GetComment(int commentId);
         void UpdateComment(Comment comment);

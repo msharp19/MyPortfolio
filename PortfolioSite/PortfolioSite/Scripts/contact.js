@@ -23,9 +23,6 @@
                         }
                         else {
                             outputErrorMessage(data.Message, "Captcha Failure");
-                            setTimeout(function () {
-                                window.location.assign(data.Url);
-                            }, 1200);
                         }
                         toggle();
                     },

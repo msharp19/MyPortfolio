@@ -11,13 +11,15 @@ namespace TelegramMessenger
 {
     public class MessageClient
     {
-        public static void SendMessageAsync(string message)
+        public static WebResponse SendMessageAsync(string message)
         {
             var configReader = ConfigReader.GetInstance();
             string urlString = "https://api.telegram.org/bot{0}/sendMessage?chat_id={1}&text={2}";
             urlString = String.Format(urlString, $"{configReader.TelegramAPIID}:{configReader.TelegramAPIHash}",
                 configReader.TelegramChannelTitle, message);
             WebRequest request = WebRequest.Create(urlString);
+            var response = request.GetResponseAsync().Result;
+            return response;
         }
     }
 }

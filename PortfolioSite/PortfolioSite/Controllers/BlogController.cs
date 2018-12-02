@@ -43,6 +43,43 @@ namespace PortfolioSite.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult GetMoreComments(int? parentId, int? blogId, int currentLevel, int pageNum = 1, int perPage = 2)
+        {
+            var model = CreateSubCommentsModel(parentId, blogId, currentLevel, pageNum, perPage);
+            return PartialView("_SubComments", model);
+        }
+
+        private CommentsModel CreateSubCommentsModel(int? parentId, int? blogId, int currentLevel, int pageNum, int perPage)
+        {
+            IList<Comment> moreComments = null;
+            int totalCommentCount = 0;
+            if (parentId!=null)
+            {
+                moreComments = _commentService.GetCommentsByParentId(parentId.Value, pageNum, perPage);
+                totalCommentCount = _commentService.GetTotalSubCommentCountByParentId(parentId.Value);
+            }
+            else
+            {
+                moreComments = _commentService.GetCommentsByBlogId(blogId.Value);
+                totalCommentCount = _commentService.GetTotalCommentCountByBlogId(blogId.Value);
+            }
+            var totalPagesModulus = totalCommentCount % perPage;
+            var totalPages = (totalCommentCount / perPage) + (totalPagesModulus >= 1 ? 1 : 0);
+            var model = _mapper.Map<IList<CommentModel>>(moreComments);
+            for (int i = 0; i < model.Count; i++) model[i].Level = currentLevel + 1;
+            return new CommentsModel()
+            {
+                Comments = model,
+                TotalCommentCount = totalCommentCount,
+                PageNum = pageNum,
+                ParentId = parentId ?? -1,
+                Level = currentLevel,
+                PerPage = perPage,
+                TotalPages = totalPages
+            };
+        }
+
         [HttpPost]
         public ActionResult AddComment(BlogPost blogName, string userName, string email, string comment, int? replyId)
         {
@@ -50,11 +87,16 @@ namespace PortfolioSite.Controllers
             if (isValid)
             {
                 var added = _commentService.AddComment(blogName.ToString(), userName, email, comment, replyId);
-                if (added != null) return new JsonResult()
+                if (added != null)
                 {
-                    Data = new { Status = "Success", Message = "Comment added." },
-                    JsonRequestBehavior = JsonRequestBehavior.DenyGet
-                };
+                    var dictionary = new RouteValueDictionary() { };
+                    dictionary.Add("blogPost", blogName);
+                    return new JsonResult()
+                    {
+                        Data = new { Status = "Success", Message = "Comment added.", Url = Url.Action("BlogPost", "Blog", dictionary, Request.Url.Scheme) },
+                        JsonRequestBehavior = JsonRequestBehavior.DenyGet
+                    };
+                }
             }
 
             var routeValues = new RouteValueDictionary();
@@ -88,6 +130,7 @@ namespace PortfolioSite.Controllers
             var comments = _commentService.GetComments(blogPost.ToString());
             model.Comments = _mapper.Map<IList<CommentModel>>(comments);
             model.CommentCount = model.Comments.Count();
+            model.TotalCommentCount = _commentService.GetTotalCommentCount(blogPost.ToString());
             return model;
         }
 
@@ -153,7 +196,6 @@ namespace PortfolioSite.Controllers
             {
                 var image = ImageFunctions.Base64ToImage(imageRaw);
                 image = ImageFunctions.Resize(image, 28,28);
-                image.Save(@"C:\Users\waili\Documents\PortfolioProject\PortfolioSite\NetworkTester\training-set\test.jpg");
                 var directory = AppDomain.CurrentDomain.BaseDirectory;
                 var path = Path.Combine(directory, "CNNModel");
                 string outputModelPath = Path.Combine(path, "model.mod");
@@ -168,7 +210,7 @@ namespace PortfolioSite.Controllers
             {
                 return new JsonResult()
                 {
-                    Data = new { Status = "Failure", Message = "Error running model" },
+                    Data = new { Status = "Failure", Message = "Error making prediction." },
                     JsonRequestBehavior = JsonRequestBehavior.DenyGet
                 };
             }

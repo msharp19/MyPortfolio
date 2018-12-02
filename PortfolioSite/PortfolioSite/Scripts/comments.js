@@ -21,12 +21,12 @@
                 success: function (data) {
                     if (data.Status === "Success") {
                         outputSuccessMessage(data.Message, "Contact Recieved");
-                    }
-                    else {
-                        outputErrorMessage(data.Message, "Captcha Failure");
                         setTimeout(function () {
                             window.location.assign(data.Url);
                         }, 1200);
+                    }
+                    else {
+                        outputErrorMessage(data.Message, "Captcha Failure");
                     }
                     toggle();
                 },
@@ -47,4 +47,26 @@ function reply(username, id) {
         scrollTop: parseInt($('.commentys-form').offset().top-65)
     }, 2000);
     $("#ReplyId").val(id);
+}
+
+function loadMoreComments(parentId, modelLevel, pageNum) {
+    if (parentId) {
+        var data = { parentId: parentId, currentLevel: modelLevel, pageNum: pageNum};
+        $.ajax({
+            type: "GET",
+            url: "../Blog/GetMoreComments",
+            data: data,
+            success: function (data) {
+                //Put the html in the right place
+                var id = ".load-more-" + parentId;
+                var parentOl = $(id).parent();
+                $(id).remove();
+                parentOl.append(data);
+            },
+            error: function () {
+                outputErrorMessage("Something went wrong :/", "Opps");
+                isSubmittingForm = false;
+            }
+        });
+    }
 }

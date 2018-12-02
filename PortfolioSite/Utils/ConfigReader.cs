@@ -29,8 +29,15 @@ namespace Utils
 
         public string GetSecret(string name)
         {
-            var secret = _kv.GetSecretAsync(ConfigurationManager.AppSettings["KeyVaultURL"], name).Result;
-            return secret.Value;
+            try
+            {
+                var secret = _kv.GetSecretAsync(ConfigurationManager.AppSettings["KeyVaultURL"], name).Result;
+                return secret.Value;
+            }
+            catch (Exception ex)
+            {
+                return ConfigurationManager.AppSettings[name] ?? string.Empty;
+            }
         }
 
         public static ConfigReader GetInstance()

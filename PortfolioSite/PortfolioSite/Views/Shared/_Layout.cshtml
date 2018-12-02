@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Matt Sharps Portfolio</title>
-    @Styles.Render("~/Content/")
     @Styles.Render("~/Content/style.css")
     @Styles.Render("~/Content/bootstrap.min.css")
     @Styles.Render("~/Content/responsive.css")
@@ -15,8 +14,8 @@
     @Styles.Render("~/Content/normalize.css")
     @Styles.Render("~/Content/component.css")
     @Styles.Render("~/Content/toastr.css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/Scripts/js/jquery.min.js")
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -54,15 +53,15 @@
             </ul>
         </nav>
         <ul role="social-icons">
-            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="https://twitter.com/mattsha06458739"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="https://linkedin.com/in/matt-sharp-128ba4151"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UC0JncgIxgBLnFru-FXXqNQg"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
         </ul>
         <p class="copy-right">&copy; @DateTime.Now.Year - Matt Sharps Portfolio</p>
         <p class="copy-right">&copy; 2015  avana LLC.. All rights Reserved</p>
     </footer>
     <!--Old here-->
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     @Scripts.Render("~/Scripts/js/html5shiv.js")
     @Scripts.Render("~/Scripts/js/modernizr.custom.js")
     @Scripts.Render("~/Scripts/js/AnimOnScroll.js")

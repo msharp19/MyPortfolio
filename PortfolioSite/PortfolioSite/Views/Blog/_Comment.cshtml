@@ -15,23 +15,33 @@
         <div class="date-pan">@Model.FormattedDateSent</div>
         @Model.Content
     </section>
-    @if (Model.Level < 3)
-    {
-        <ol class="reply-pan">
-            @for (int i = 0; i < Model.SubComments.Count(); i++)
+
+    <ol class="reply-pan">
+        @if (Model.Level < 1)
+        {
+            for (int i = 0; i < ((Model.SubComments.Count() > 2) ? 2 : Model.SubComments.Count()); i++)
             {
                 var subComment = Model.SubComments[i];
-                subComment.Level = Model.Level+1;
+                subComment.Level = Model.Level + 1;
                 @Html.Partial("_Comment", subComment)
             }
-            @if (Model.SubCommentCount > 2)
+            if (Model.SubCommentCount > 1)
             {
-                <div class="load-more">
-                    <a href="javascript:loadMoreComments(@Model.Id)" class="load-more-btn">Load More</a>
-                </div>
+        <li class="load-more load-more-@Model.Id comment-action">
+            <a href="javascript:loadMoreComments(@Model.Id, @Model.Level, 1)" class="load-more-btn text-center"><i class="fa"></i>See Replies</a>
+        </li>
             }
-        </ol>
-    }
+        }
+        else
+        {
+            if (Model.SubCommentCount > 0)
+            {
+        <li class="load-more load-more-@Model.Id comment-action">
+            <a href="javascript:loadMoreComments(@Model.Id, @Model.Level, 1)" class="load-more-btn text-center"><i class="fa"></i>See Replies</a>
+        </li>
+            }
+        }
+    </ol>
 </li>
 
 @Scripts.Render("~/Scripts/jdenticon-1.8.0.js")
