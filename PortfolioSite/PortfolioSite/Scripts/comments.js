@@ -49,9 +49,10 @@ function reply(username, id) {
     $("#ReplyId").val(id);
 }
 
-function loadMoreComments(parentId, modelLevel, pageNum) {
+function loadMoreComments(parentId, modelLevel, pageNum, perPage) {
     if (parentId) {
-        var data = { parentId: parentId, currentLevel: modelLevel, pageNum: pageNum};
+        var data = { parentId: parentId, currentLevel: modelLevel, pageNum: pageNum };
+        if (perPage) data.perPage = perPage;
         $.ajax({
             type: "GET",
             url: "../Blog/GetMoreComments",

@@ -1,4 +1,5 @@
 ﻿@model PortfolioSite.Models.BlogItemModel
+@using ANN;
 
 @{
     ViewBag.Title = "NeuralNetwork";
@@ -23,10 +24,10 @@
             </figure>
             <div class="enter-content">
                 <p>
-                    Neural networks are systems made up of a number of simple, highly interconnected processing elements which process information idependantly in response to external inputs. Artifical neural networks have been created loosly modelled on the brain, loosely because brains are connected in much more exotic ways and with a lot more "neurons" - the processing elements. An animal brain typically consists of billions of neurons while our modelled networks maybe consist of 1-thousends of nodes which is significantly less, the sheer number of neurons in the brain capture emerging behaviour much better than our computer counter-parts.
+                    Neural networks are systems made up of a number of simple, highly interconnected processing elements which process information idependantly in response to external inputs. Artifical neural networks have been created loosly modelled on the brain, loosely because brains are connected in much more exotic ways and with a lot more "neurons" - the processing elements. An animal brain typically consists of billions of neurons while our modelled networks maybe consist of 1-thousends which is significantly less. The sheer number of neurons in the brain capture emerging behaviour much better than our computer counter-parts.
                 </p>
                 <p>
-                    ANNs are made up of a number of nodes connected in layers. Each node has an activation function which determins if the node is lit up or not. As can be seen in the diagram, we have at least 3 layers to a network, the input layer which has a count of the number of values going into the network, the hidden layers in the middle which is highly connected to both the input and output layer and finally the output layer which is a count of the total possible outputs - yes or no would be 1 output node where 0 represented no and 1 represented yes. The input and output layers work better when the value has been normalized - is between 0 & 1). It is possible to have any amount of hidden layers between the input and the output, in the diagram we have 1 layer, with additional layers (and additional neurons) there will be an increase in time taken to traverse the network. The hidden layers are where the actual processing in the network is done. The hidden layer acts as a black box to us the user as we do not get to see the values held by each neuron and the patterns they fire in, we only see the output nodes fired based on inputs.
+                    ANNs are made up of a number of nodes connected in layers. As can be seen in the diagram, we have at least 3 layers to a network, the input layer which has a count of the number of values going into the network, the hidden layers in the middle which is highly connected to both the input and output layer and finally the output layer which is a count of the total possible outputs - yes or no would be 1 output node where 0 represented no and 1 represented yes. The input and output layers work better when the value has been normalized - is between 0 & 1). It is possible to have any amount of hidden layers between the input and the output, in the diagram we have 1 layer, with additional layers (and additional neurons) there will be an increase in time taken to traverse the network. The hidden layers are where the actual processing in the network is done. The hidden layer acts as a black box to us the user as we do not get to see the values held by each neuron and the patterns they fire in, we only see the output nodes fired based on inputs.
                 </p>
                 <figure class="intext-padding">
                     <a href="../images/blog-main-images/nn-diagram.png">
@@ -47,8 +48,68 @@
                 </p>
                 <p>Below is some data to train the model with (raw). I recreated a dataset that i saw used as an exmaple a while ago, the gist of it is when its over a certain temparature and not raining or if its snowing and its cold enough, the output will be to play. The two known columns are "temparature" and "weather description" and the output column is "plays outside or not"</p>
                 @Html.Partial("_NeuralNetworkDataMethod")
+                <figure class="intext-padding table-pad">
+                    <p class="text-center">Below is the data put into a table (a bit more human read-able) pre-formatting.</p>
+                    <table id="table" class="table table-hover table-mc-light-blue nn-table">
+                        <thead>
+                            <tr>
+                                <th>Majority Weather</th>
+                                <th>Temperature (C)</th>
+                                <th>Plays Outside</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var inputData = NetworkFactory.GetInputData();
+                                var ideals = NetworkFactory.GetIdealValues();
+                                for (int i = 0; i < inputData.Count(); i++)
+                                {
+                                    <tr>
+                                        <td data-title="Majority Weather">@inputData[i][0]</td>
+                                        <td data-title="Temperature (C)">@inputData[i][1]</td>
+                                        <td data-title="Plays Outside">@ideals[i][0]</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </figure>
                 <p>The data needs to be formatted and between 0-1. Below we take all the distinct values for weather and turn them into columns. If the row has the value that corresponds to a column, the value will be 1 otherwise it will be zero. For the temp.</p>
                 @Html.Partial("_NeuralNetworkFormatMethod")
+                <figure class="intext-padding table-pad">
+                    <p class="text-center">Below is the data put into a table post-formatting.</p>
+                    <table id="table" class="table table-hover table-mc-light-blue nn-table">
+                        <thead>
+                            <tr>
+                                <th>Rain</th>
+                                <th>Wind</th>
+                                <th>Sun</th>
+                                <th>Overcast</th>
+                                <th>Snow</th>
+                                <th>Temperature (C)</th>
+                                <th>Plays Outside</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var inputDataPost = NetworkFactory.FormatInputValues(NetworkFactory.GetInputData());
+                                var idealsPost = NetworkFactory.GetIdealValues();
+                                for (int i = 0; i < inputDataPost.Count(); i++)
+                                {
+                            <tr>
+                                <td data-title="Rain">@inputDataPost[i][0]</td>
+                                <td data-title="Wind">@inputDataPost[i][1]</td>
+                                <td data-title="Sun">@inputDataPost[i][2]</td>
+                                <td data-title="Overcast">@inputDataPost[i][3]</td>
+                                <td data-title="Snow">@inputDataPost[i][4]</td>
+                                <td data-title="Temperature (C)">@Math.Round(inputDataPost[i][5], 2).ToString()</td>
+                                <td data-title="Plays Outside">@idealsPost[i][0]</td>
+                            </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </figure>
                 <p>We need to create a network with input nodes, hidden nodes and output nodes.</p>
                 @Html.Partial("_NeuralNetworkNetworkMethod")
                 <p>Onces the model is complete we train it with the formatted data.</p>
@@ -76,6 +137,7 @@
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
 @Styles.Render("~/Content/toastr.css")
+@Styles.Render("~/Content/table.css")
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 <script>
@@ -96,3 +158,4 @@
 
 @Scripts.Render("~/Scripts/ann.js")
 @Scripts.Render("~/Scripts/code-block.js")
+@Scripts.Render("~/Scripts/table.js")

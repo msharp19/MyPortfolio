@@ -269,6 +269,7 @@
     <Content Include="Content\responsive.css" />
     <Content Include="Content\set2.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\table.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -284,6 +285,7 @@
     <Content Include="images\blog-main-images\network.jpg" />
     <Content Include="images\blog-main-images\model.jpg" />
     <Content Include="images\blog-main-images\nn-diagram.png" />
+    <Content Include="images\blog-main-images\space.jpg" />
     <Content Include="images\blog-main-images\train-cnn-2.png" />
     <Content Include="images\blog-main-images\train-cnn-3.png" />
     <Content Include="images\blog-main-images\train-cnn.png" />
@@ -11697,6 +11699,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\table.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -11764,7 +11767,7 @@
     <Content Include="Views\Shared\_CNNTrainMethod.cshtml" />
     <Content Include="Views\Shared\_CNNTestMethod.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
-    <Content Include="Views\Blog\_SubComments.cshtml" />
+    <Content Include="Views\Blog\_MoreComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,11 @@
+﻿@model PortfolioSite.Models.CommentsModel
+
+@for (int i = 0; i < Model.Comments.Count(); i++)
+{
+    @Html.Partial("_Comment", @Model.Comments[i])
+}
+
+@if (@Model.TotalCommentCount > 2 && (Model.PageNum < Model.TotalPages))
+{
+    <li class="comment-action load-more load-more-@Model.ParentId"><a class="text-center" href="javascript:loadMoreComments(@Model.ParentId, @Model.Level, @(Model.PageNum+1), @Model.PerPage)"><i class="fa caret-down inline"></i>Load More</a></li>
+}

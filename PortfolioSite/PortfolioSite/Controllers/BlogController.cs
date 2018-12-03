@@ -46,11 +46,11 @@ namespace PortfolioSite.Controllers
         [HttpGet]
         public ActionResult GetMoreComments(int? parentId, int? blogId, int currentLevel, int pageNum = 1, int perPage = 2)
         {
-            var model = CreateSubCommentsModel(parentId, blogId, currentLevel, pageNum, perPage);
-            return PartialView("_SubComments", model);
+            var model = CreateMoreCommentsModel(parentId, blogId, currentLevel, pageNum, perPage);
+            return PartialView("_MoreComments", model);
         }
 
-        private CommentsModel CreateSubCommentsModel(int? parentId, int? blogId, int currentLevel, int pageNum, int perPage)
+        private CommentsModel CreateMoreCommentsModel(int? parentId, int? blogId, int currentLevel, int pageNum, int perPage)
         {
             IList<Comment> moreComments = null;
             int totalCommentCount = 0;
@@ -131,6 +131,7 @@ namespace PortfolioSite.Controllers
             model.Comments = _mapper.Map<IList<CommentModel>>(comments);
             model.CommentCount = model.Comments.Count();
             model.TotalCommentCount = _commentService.GetTotalCommentCount(blogPost.ToString());
+            model.PerPage = 5;
             return model;
         }
 

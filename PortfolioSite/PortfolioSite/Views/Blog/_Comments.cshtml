@@ -10,9 +10,9 @@
         {
             @Html.Partial("_Comment", @Model.Comments[i])
         }
-        @if(@Model.TotalCommentCount > 10)
+        @if(@Model.TotalCommentCount > Model.PerPage)
         {
-            <li id="main-load-more" class="comment-action"><a class="text-center" href="loadMoreComments(null, @Model.Level, @(Model.PageNum+1))"><i class="fa caret-down inline"></i>Load More</a></li>
+            <li id="main-load-more" class="comment-action"><a class="text-center" href="loadMoreComments(null, @Model.Level, @(Model.PageNum+1), @Model.PerPage)"><i class="fa caret-down inline"></i>Load More</a></li>
         }
     </ul>
     <!--Comment Form-->
