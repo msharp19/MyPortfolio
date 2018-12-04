@@ -20,7 +20,8 @@
                 </a>
             </figure>
             <div class="enter-content">
-                <p>Convolutional neural networks (CNN's) are deep learning models based off artifical nerual networks but which are more suited to recognizing images.</p>
+                <h2>Introduction</h2>
+                <p>Convolutional neural networks (CNN's) are deep learning models based off artifical neural networks but which are more suited to recognizing images.</p>
                 <p class="left-align">Before we start with CNN's we need to understand how the computer interprets an image. Below we have an image of a man in space above earth how we see it (curtosy of NASA) and below we have a grid which is a simple representation of how a computer sees it. The bounds of the indevidual pixal value are from 0-255, 0 being black and 255 being white making this a value that represents shade (grey scale). The grid below is simplified as computers see in aRGB (alpha, red, blue and green) which each have a value from 0-255. The values below are calculated by taking red, blue and green pixals and dividing them by 3 (the average), we ignore alpha as it is the opacity of an image. For the Mnists example below we use only the greyscale value 0-255 which makes computational time much quicker than if we were to use each value for aRGB which would have 3 times as many values as inputs.</p>
                 <figure class="intext-padding">
                     <div class="">
@@ -41,18 +42,26 @@
                     </div>
                 </figure>
 
+                <h2>Network Diagram</h2>
                 <p>As can be seen below, the architecture is very similar to the regular ANN architecture described in my previous post <a href="../Blog/BlogPost?blogPost=NeuralNetwork">here</a> but it has some additional layers which can be seen on the left.</p>
-                <p>The input layer takes an array of values that represents an image. Unlike ANN's, the input data for CNN's are volumes. The volumes can consist of a single pixal (avergae of aRGB) - 2 dimensional or multiple dimensions - a volume of each value for RGB. Just like in ANN's the values should be normalized between 0-1, this is done by dividing the pixal by the max possible value - 255.</p>
-                <p>CNN's have a convolutional layer where they use filters (kernals) to detect features in an image - edges being an example of this. If you head to my convolution blog found <a href="../Blog/BlogPost?blogPost=Convolution">here</a> i explain what a filter is in much more depth. The filters used in this convolutional layer are set to detect specific features like angled lines or curves. The filter is moved over the whole image and run, a value is then provided representing the confidence of the feature in the respective part of the image. The product sum between the two matrices comes out high if the feature exists and low if it doesn't. There is also a non-linearity layer where we use the ReLU activation function, this helps to introduce non-linearity into our network. If a negative value is passed into the function, 0 is returned and if a possitive value is passed in, it stays the same.</p>
-                <p>Next there is a pooling layer, this is used to reduce the spatial dimensions of an image although this is done independent of the number of channels - aRGB. It does it by taking the most responsive parts of an image. A window is passed over the image and the maximum value is chosen in the current sample space, the window is then moved to the next set of pixals and the maximum value chosen from that. This significantly reduces redundency and decreases the time taken to train the model. This also helps with reducing overfitting. There is an average pooling in which instead of the maximum value in the sliding window being chosen, the average of the values are selected. This approach doesn't work as well as the max pooling.</p>
-                <p>We do have another layer that is worth mentioning and that is the dropout layer.</p>
-                <p>After the model has run past the pooling layer/dropout layer, we hit the fully connected layer of the network which is explained <a href="../Blog/BlogPost?blogPost=NeuralNetwork">here</a>.</p>
                 <figure class="intext-padding">
                     <a href="../images/blog-main-images/cnn-diagram.png">
                         <img src="../images/blog-main-images/cnn-diagram.png" alt="" class="img-responsive" />
                     </a>
                 </figure>
+                <h2>Input Layer</h2>
+                <p>The input layer takes an array of values that represents an image. Unlike ANN's, the input data for CNN's are volumes. The volumes can consist of a single pixal (avergae of aRGB) - 2 dimensional or multiple dimensions - a volume of each value for RGB. Just like in ANN's the values should be normalized between 0-1, this is done by dividing the pixal by the max possible value - 255.</p>
+                <h2>Convolutional Layer</h2>
+                <p>CNN's have a convolutional layer where they use filters (kernals) to detect features in an image - edges being an example of this. If you head to my convolution blog found <a href="../Blog/BlogPost?blogPost=Convolution">here</a> i explain what a filter is in much more depth. The filters used in this convolutional layer are set to detect specific features like angled lines or curves. The filter is moved over the whole image and run, a value is then provided representing the confidence of the feature in the respective part of the image. The product sum between the two matrices comes out high if the feature exists and low if it doesn't. There is also a non-linearity layer where we use the ReLU activation function, this helps to introduce non-linearity into our network. If a negative value is passed into the function, 0 is returned and if a possitive value is passed in, it stays the same.</p>
+                <h2>Pooling Layer</h2>
+                <p>Next there is a pooling layer, this is used to reduce the spatial dimensions of an image although this is done independent of the number of channels - aRGB. It does it by taking the most responsive parts of an image. A window is passed over the image and the maximum value is chosen in the current sample space, the window is then moved to the next set of pixals and the maximum value chosen from that. This significantly reduces redundency and decreases the time taken to train the model. This also helps with reducing overfitting. There is an average pooling in which instead of the maximum value in the sliding window being chosen, the average of the values are selected. This approach doesn't work as well as the max pooling.</p>
+                <h2>Dropout Layer</h2>
+                <p>We do have another layer that is worth mentioning and that is the dropout layer. This is important as it helps to stop the model overfitting - it does so by dropping out random nodes both hidden and visible.</p>
+                <h2>Fully-Connected Layer</h2>
+                <p>After the model has run past the pooling layer/dropout layer, we hit the fully connected layer of the network which is explained in one of my other blog posts <a href="../Blog/BlogPost?blogPost=NeuralNetwork">here</a>.</p>
+                <h2>Data</h2>
                 <p>Data is very important when training CNN's, the more data the better. The issue with having more data is that the time taken to train the overall model increases but this is a good trade off when it comes to accuracy. It is also handy to take your image dataset and duplicate it a few times slightly rotated at angles or flipped. This then increases our chances of being able to classify an image that has been taken in these states - it makes the model more robust and less likely to overfit. It also may be a good idea to do some image pre-processing. If you are classifying images that could potentially have some noise, we can mitigate that with a small bit of processing either through filtering or with an algorithm like entropy cropping. Entropy cropping selects only the subject of the image which removes a lot of the background objects that could potentially fire off our feature detectors in the convolutional layer.</p>
+                <h2>Working Example</h2>
                 <p>So now i have explained the basics of convolutional neural networks, we will try to make one. BrightWire - is the library used in the following example: <a href="https://github.com/jdermody/brightwire">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a>. </p>
                 <p class="left-align">To build the model for testing, i ran the out the box training method (i have refactored this in one of the code snippits below). This is the model starting to train.</p>
                 <figure class="intext-padding">
@@ -86,6 +95,7 @@
                 @Html.Partial("_CNNTestMethod")
                 <p></p>
                 <p class="text-center">Please try the code below!</p>
+                <p class="text-center no-margin-bottm">Please also bare in mind that this has been trained with hand-written images not digital. I have chosen a thick brush as i seem to get better results. Also I seem to get better results when the number has a small amount of padding all around (not touching sides of box) <a href="../images/blog-main-images/mnist-handwritten-example.png">Examples</a>.</p>
                 <div class="prediction-center">
                     <div id="sketch" class="working-example">
                         <canvas id="paint"></canvas>

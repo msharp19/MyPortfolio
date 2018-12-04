@@ -8,8 +8,9 @@
       //Create a row (distinct column values + 1 number field)
       double[] row = null;
       //Find min & max temp
-      var minTemp = unformattedData.Select(x => x[1]).Min(x => int.Parse(x));
-      var maxTemp = unformattedData.Select(x => x[1]).Max(x => int.Parse(x));
+      //Minimum & Maximum possible temp in the area - so when testing we have a value on the scale
+      var minTemp = -10;
+      var maxTemp = 35;
       var deviationFromZero = 0 - minTemp;
       var range = (minTemp < 0 ? 0-minTemp : 0+minTemp) + (maxTemp < 0 ? 0 - maxTemp : 0 + maxTemp);
       //Add the rows to the new formatted array
