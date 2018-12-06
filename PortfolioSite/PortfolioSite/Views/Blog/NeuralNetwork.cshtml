@@ -29,7 +29,7 @@
                 </p>
                 <h2>Network</h2>
                 <p>
-                    ANNs are made up of a number of nodes connected in layers. As can be seen in the diagram, we have at least 3 layers to a network, the input layer which has a count of the number of values going into the network, the hidden layers in the middle which is highly connected to both the input and output layer and finally the output layer which is a count of the total possible outputs - yes or no would be 1 output node where 0 represented no and 1 represented yes. The input and output layers work better when the value has been normalized - is between 0 & 1). It is possible to have any amount of hidden layers between the input and the output, in the diagram we have 1 layer, with additional layers (and additional neurons) there will be an increase in time taken to traverse the network. The hidden layers are where the actual processing in the network is done. The hidden layer acts as a black box to us the user as we do not get to see the values held by each neuron and the patterns they fire in, we only see the output nodes fired based on inputs.
+                    ANNs are made up of a number of nodes connected in layers. As can be seen in the diagram, we have at least 3 layers to a network, the input layer which has a count of the number of values going into the network, the hidden layers in the middle which is highly connected to both the input and output layer and finally the output layer which is a count of the total possible outputs - yes or no would be 1 output node where 0 represented no and 1 represented yes. The input and output layers work better when the value has been normalized - is between 0 & 1). It is possible to have any amount of hidden layers between the input and the output, in the diagram we have 1 layer - with additional layers (and additional neurons) there will be an increase in time taken to traverse the network. The hidden layers are where the actual processing in the network is done. The hidden layer acts as a black box to us the user as we do not get to see the values held by each neuron and the patterns they fire in, we only see the output nodes fired based on inputs.
                 </p>
                 <figure class="intext-padding">
                     <a href="../images/blog-main-images/nn-diagram.png">
@@ -38,7 +38,7 @@
                 </figure>
                 <h2>Data</h2>
                 <p>
-                    The data entering a neural network via the input layer needs to be in a correct format to help with accuracy, we cannot just give it full strings. As said above we want to normalize the data by putting it between 0 and 1. If a column of data has string data, we can expand that one column out to the distinct count possible string values found in that column. Then for each row, the new set of columns will be marked with 0 & 1 respective to the string value held in the original column.
+                    The data entering a neural network via the input layer needs to be in a correct format to help with accuracy, we cannot just give it full strings. As said above we want to normalize the data by putting it between 0 and 1. If a column of data has string data, we can expand that one column out to the distinct count of possible string values found in that column. Then for each row, the new set of columns will be marked with 0 & 1 respective to the string value held in the original column.
                 </p>
                 <h2>Train/Test</h2>
                 <p>
@@ -48,7 +48,7 @@
                     Each neuron has an activation function which helps stabalize the propagation, you can set the neurons with a number of different activation functions better explained <a class="inline-block href="https://towardsdatascience.com/activation-functions-and-its-types-which-is-better-a9a5310cc8f">here</a>.
                 </p>
                 <p>
-                    Once a network has been trained to a sufficiant level, predictions can be made. The act of testing a network is done with forward propagation which means that the weightings will not be updated by showing it new input patterns but will travel through the network and give an output reading. This output reading is in the form of an array of confidences, all of the possible outputs with a 0-1 value assigned to it.
+                    Once a network has been trained to a sufficiant level, predictions can be made. The act of testing a network is done with forward propagation which means that the weightings will not be updated by showing it new input patterns but instead will travel through the network and give an output reading. This output reading is in the form of an array of confidences, all of the possible outputs with a 0-1 value assigned to it.
                 </p>
                 <h2>Working Example</h2>
                 <p>Below is some data to train the model with (raw). I recreated a dataset that i saw used as an exmaple a while ago, the gist of it is when its over a certain temparature and not raining or if its snowing and its cold enough, the output will be to play. The two known columns are "temparature" and "weather description" and the output column is "plays outside or not"</p>

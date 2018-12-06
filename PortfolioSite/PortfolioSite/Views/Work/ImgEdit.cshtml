@@ -13,7 +13,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <section>
-                    <p>This is a WinForm Desktop application to build image pre-processing chains. Essentially it is just an ordered list of functions and arguments performed on each image used for training/testing which can then be stored in an xml file. You are able to test out the chains before saving or discarding to start again.</p>
+                    <p>This is a WinForm Desktop application to build image pre-processing chains. Essentially it is just an ordered list of functions and arguments performed on each image used for training/testing which can then be stored in an xml file. The chains can then be tested before saving or discarding to start again.</p>
                     <p>The library used was <a href="http://imageprocessor.org/">ImageProcessor</a>. I selected this library because it had entropy crop which is very important for creating datasets. Some 'noise' from the image can be removed in a lot of cases because only the main subject in the image is kept, the rest of cropped. It is also useful to duplicate the datasets in different rotations, the chain can also be used for this.</p>
                     <p>
                         <strong>Details</strong><br />
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <p class="left-align">Here i have added an extra function (Roberts Cross Edge Filter) which finds the edges in the image via convolution (talked about in my <a href="../Blog/BlogPost?blogPost=Convolution" class="inline">blog post</a>). In reality we wouldn't really use this as there is already a layer in the convolutional neural network that applies filters to an image to help with classification so we need an original image as not to loose potentially useful information.</p>
+                    <p class="left-align">Here I have added an extra function (Roberts Cross Edge Filter) which finds the edges in the image via convolution (talked about in my <a href="../Blog/BlogPost?blogPost=Convolution" class="inline">blog post</a>). In reality we wouldn't really use this as there is already a layer in the convolutional neural network that applies filters to an image to help with classification so we need an original image as not to lose potentially useful information.</p>
                     <a href="~/images/img/img2.png" class="pointer">
                         <img src="~/images/img/img2.png" alt="" class="img-responsive" />
                     </a>

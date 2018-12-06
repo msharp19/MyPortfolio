@@ -296,6 +296,7 @@
     <Content Include="images\cnn\cnn-run2.png" />
     <Content Include="images\cnn\cnn-stop.png" />
     <Content Include="images\cnn\cnn1.png" />
+    <Content Include="images\cnn\space.jpg" />
     <Content Include="images\copy\cb1.png" />
     <Content Include="images\copy\cb2.png" />
     <Content Include="images\copy\cb3.png" />
