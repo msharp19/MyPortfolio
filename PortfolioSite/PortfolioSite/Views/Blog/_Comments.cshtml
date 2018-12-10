@@ -1,7 +1,7 @@
 ﻿@model PortfolioSite.Models.CommentsModel
 @using CaptchaMvc.HtmlHelpers
 
-<!-- Comments -->
+
 <div class="comments-pan">
     <h3>@Model.CommentCount Comments</h3>
     @Html.Hidden("DisplayedComments", @Model.CommentCount)
@@ -15,21 +15,21 @@
             <li id="main-load-more" class="comment-action"><a class="text-center" href="loadMoreComments(null, @Model.Level, @(Model.PageNum+1), @Model.PerPage)"><i class="fa caret-down inline"></i>Load More</a></li>
         }
     </ul>
-    <!--Comment Form-->
+
     <div class="commentys-form">
         @Html.Hidden("ReplyId", null)
         <h4>Leave a comment <span class="reply-panel" style="display:none">- Reply to <span class="reply-name"></span></span></h4>
         <div class="row">
             <form action="" method="get">
                 <div class="col-xs-12 col-sm-4 col-md-4">
-                    <input name="" id="name-val" type="text" placeholder="Whats your name *" value="@Model.Username">
+                    <input name="" id="name-val" type="text" placeholder="What's your name *" value="@Model.Username">
                     <span id="name" class="validation-email">
                         <i class="fa fa-check green" style="display:none;"></i>
                         <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
                     </span>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
-                    <input name="" id="email-val" type="email" placeholder="Whats your email *" value="@Model.Email">
+                    <input name="" id="email-val" type="email" placeholder="What's your email *" value="@Model.Email">
                     <span id="email" class="validation-email">
                         <i class="fa fa-check green" style="display:none;"></i>
                         <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <textarea name="" id="comments" cols="" rows="" placeholder="Whats on your mind">@Model.Comment</textarea>
+                    <textarea name="" id="comments" cols="" rows="" placeholder="What's on your mind">@Model.Comment</textarea>
                     <span id="comment-box" class="validation-email">
                         <i class="fa fa-check green" style="display:none;"></i>
                         <i class="fa fa-exclamation err-validation exclaim red" style="display:none;"></i>
