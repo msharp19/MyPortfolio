@@ -1,6 +1,6 @@
 ﻿$(function () {
 
-    var isSubmittingForm = true;
+    var isSubmittingForm = false;
     
     $("#add-comment").on("click", function () {
         var username = $("#name-val").val();
@@ -8,7 +8,9 @@
         var commentText = $("#comments").val();
         var blogName = $("#BlogPostName").val();
         var replyId = ($("#ReplyId").val().length > 0 ? $("#ReplyId").val() : null);
-        if (checkForEmptyFields()) {
+        if (checkForEmptyFields() && isSubmittingForm === false) {
+            isSubmittingForm = true;
+            toggle();
             var data = {
                 blogName: blogName, userName: username, email: emailValue, comment: commentText,
                 CaptchaDeText: $("#CaptchaDeText").val(), CaptchaInputText: $("#CaptchaInputText").val(),
@@ -27,18 +29,25 @@
                     }
                     else {
                         outputErrorMessage(data.Message, "Captcha Failure");
+                        isSubmittingForm = false;
+                        toggle();
                     }
-                    toggle();
                 },
                 error: function () {
                     outputErrorMessage("Something went wrong :/", "Opps");
                     isSubmittingForm = false;
+                    toggle();
                 }
             });
         }
     });
 
 });
+
+function toggle() {
+    //Toggle button click
+    $("#add-comment").toggleClass("disabled-btn");
+}
 
 function reply(username, id) {
     $(".reply-panel").show();
@@ -50,7 +59,8 @@ function reply(username, id) {
 }
 
 function loadMoreComments(parentId, modelLevel, pageNum, perPage) {
-    if (parentId) {
+    if (parentId && isSubmittingForm === false) {
+        isSubmittingForm = true;
         var data = { parentId: parentId, currentLevel: modelLevel, pageNum: pageNum };
         if (perPage) data.perPage = perPage;
         $.ajax({
@@ -63,6 +73,7 @@ function loadMoreComments(parentId, modelLevel, pageNum, perPage) {
                 var parentOl = $(id).parent();
                 $(id).remove();
                 parentOl.append(data);
+                isSubmittingForm = false;
             },
             error: function () {
                 outputErrorMessage("Something went wrong :/", "Opps");

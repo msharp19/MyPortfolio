@@ -103,7 +103,7 @@ namespace ANN
             //Add the rows to the new formatted array
             for (int i = 0; i < unformattedData.Count(); i++)
             {
-                //Init new row
+                //Init new row - plus 1 for the temp column
                 row = new double[distinctColumnNames.Count() + 1];
                 //Expand columns for the weather
                 for (int j = 0; j < distinctColumnNames.Count(); j++)

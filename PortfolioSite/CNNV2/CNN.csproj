@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="CNNManager.cs" />
     <Compile Include="DataSet.cs" />
+    <Compile Include="Enum\EngineType.cs" />
     <Compile Include="ImageFunctions.cs" />
     <Compile Include="NetworkConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -279,7 +279,7 @@
     <Content Include="images\about-images\me.jpg" />
     <Content Include="images\about-images\me2-orig.png" />
     <Content Include="images\blog-main-images\cnn-diagram.png" />
-    <Content Include="images\blog-main-images\cnn.png" />
+    <Content Include="images\blog-main-images\cnn.jpg" />
     <Content Include="images\blog-main-images\conv.jpg" />
     <Content Include="images\blog-main-images\mnist-change.png" />
     <Content Include="images\blog-main-images\network.jpg" />

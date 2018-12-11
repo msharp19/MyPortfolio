@@ -23,8 +23,8 @@
                         }
                         else {
                             outputErrorMessage(data.Message, "Captcha Failure");
+                            toggle();
                         }
-                        toggle();
                     },
                     error: function () {
                         outputErrorMessage("Something went wrong :/", "Opps");
@@ -44,6 +44,7 @@
     function toggle() {
         $("#email-load").toggleClass("none");
         $("#email-load").toggleClass("inline");
+        $("#send-email").toggleClass("disabled-btn");
     }
 
 });

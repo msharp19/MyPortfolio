@@ -10,7 +10,7 @@
     var mouse = { x: 0, y: 0 };
     var last_mouse = { x: 0, y: 0 };
 
-    /* Mouse Capturing Work */
+    //For Desktop
     canvas.addEventListener('mousemove', function (e) {
         last_mouse.x = mouse.x;
         last_mouse.y = mouse.y;
@@ -18,26 +18,37 @@
         mouse.x = e.pageX - this.offsetLeft;
         mouse.y = e.pageY - this.offsetTop;
     }, false);
-
-
-    setupCanvas(ctx);
-
     canvas.addEventListener('mousedown', function (e) {
         canvas.addEventListener('mousemove', onPaint, false);
     }, false);
-
     canvas.addEventListener('mouseup', function () {
         canvas.removeEventListener('mousemove', onPaint, false);
     }, false);
 
+    //For mobile
+    canvas.addEventListener("touchmove", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousemove", {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+    }, false);
+
+    //Paint 
     var onPaint = function () {
+        draw(mouse.x, mouse.y, last_mouse.x, last_mouse.y);
+    };
+    function draw(x, y, lastX, lastY) {
         ctx.beginPath();
-        ctx.moveTo(last_mouse.x, last_mouse.y);
-        ctx.lineTo(mouse.x, mouse.y);
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
         ctx.closePath();
         ctx.stroke();
-    };
-
+    }
+    setupCanvas(ctx);
 }());
 
 function setupCanvas(ctx) {

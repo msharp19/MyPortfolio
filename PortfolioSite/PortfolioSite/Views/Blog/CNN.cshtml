@@ -4,6 +4,7 @@
     ViewBag.Title = "_CNN";
 }
 
+@Html.Hidden("BlogPostName", Model.BlogPost.ToString())
 <main role="main-inner-wrapper" class="container">
     <div class="blog-details">
         <article class="post-details" id="post-details">
@@ -15,8 +16,8 @@
                 <a class="proj-url" href="https://github.com/msharp19/MyPortfolio/tree/master/PortfolioSite/CNNV2">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a>
             </header>
             <figure>
-                <a href="../images/blog-main-images/cnn.png">
-                    <img src="../images/blog-main-images/cnn.png" alt="" class="img-responsive" />
+                <a href="../images/blog-main-images/cnn.jpg">
+                    <img src="../images/blog-main-images/cnn.jpg" alt="" class="img-responsive auto-margin" />
                 </a>
             </figure>
             <div class="enter-content">
@@ -37,7 +38,7 @@
                     </div>
                     <!--Hidden-->
                     <div style="display:none; ">
-                        <img id="grid-img-hidden" src="../images/cnn/space.jpg" width="20" height="20" alt="" class="img-responsive inline" style="display:none;" />
+                        <img id="grid-img-hidden" src="../images/blog-main-images/space.jpg" width="20" height="20" alt="" class="img-responsive inline" style="display:none;" />
                         <canvas id="rep-img-hidden" class="inline" width="20" height="20" style="display:none; "></canvas>
                     </div>
                 </figure>

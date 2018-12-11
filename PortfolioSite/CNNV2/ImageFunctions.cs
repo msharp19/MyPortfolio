@@ -45,9 +45,7 @@ namespace CNNV2
 
         public static Bitmap Base64ToImage(string base64String)
         {
-            // Convert base 64 string to byte[]
             byte[] imageBytes = Convert.FromBase64String(base64String);
-            // Convert byte[] to Image
             using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
             {
                 System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
@@ -75,9 +73,7 @@ namespace CNNV2
         {
             var destRect = new Rectangle(0, 0, width, height);
             var destImage = new Bitmap(width, height);
-
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
             using (var graphics = Graphics.FromImage(destImage))
             {
                 graphics.CompositingMode = CompositingMode.SourceCopy;
@@ -85,7 +81,6 @@ namespace CNNV2
                 graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
                 graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
                 using (var wrapMode = new ImageAttributes())
                 {
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
