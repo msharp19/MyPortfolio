@@ -265,9 +265,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\component.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\lightslider.css" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\set2.css" />
+    <Content Include="Content\slippry.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\table.css" />
     <Content Include="Content\toastr.css" />
@@ -278,6 +280,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\about-images\me.jpg" />
     <Content Include="images\about-images\me2-orig.png" />
+    <Content Include="images\arrows.svg" />
     <Content Include="images\blog-main-images\cnn-diagram.png" />
     <Content Include="images\blog-main-images\cnn.jpg" />
     <Content Include="images\blog-main-images\conv.jpg" />
@@ -297,6 +300,12 @@
     <Content Include="images\cnn\cnn-stop.png" />
     <Content Include="images\cnn\cnn1.png" />
     <Content Include="images\cnn\space.jpg" />
+    <Content Include="images\convolution\bike.jpg" />
+    <Content Include="images\convolution\building-2.jpg" />
+    <Content Include="images\convolution\building.jpg" />
+    <Content Include="images\convolution\cat.jpg" />
+    <Content Include="images\convolution\road.jpg" />
+    <Content Include="images\convolution\rose.jpg" />
     <Content Include="images\copy\cb1.png" />
     <Content Include="images\copy\cb2.png" />
     <Content Include="images\copy\cb3.png" />
@@ -11655,6 +11664,7 @@
     <Content Include="Scripts\code-block.js" />
     <Content Include="Scripts\comments.js" />
     <Content Include="Scripts\contact.js" />
+    <Content Include="Scripts\convolution.js" />
     <Content Include="Scripts\form-validation.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jdenticon-1.8.0.js" />
@@ -11696,10 +11706,14 @@
     <None Include="Scripts\js\_references.js" />
     <Content Include="Scripts\js\toastr.min.js" />
     <Content Include="Scripts\layout.js" />
+    <Content Include="Scripts\lightslider.js" />
+    <Content Include="Scripts\lightslider.min.js" />
+    <Content Include="Scripts\marvinj.min.js" />
     <Content Include="Scripts\messaging.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\slippry.min.js" />
     <Content Include="Scripts\table.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -11769,6 +11783,8 @@
     <Content Include="Views\Shared\_CNNTestMethod.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Blog\_MoreComments.cshtml" />
+    <Content Include="Views\Blog\Convolution.cshtml" />
+    <Content Include="Views\Shared\_ConvolutionJsMethods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,130 @@
+﻿@model PortfolioSite.Models.BlogItemModel
+
+@{
+    ViewBag.Title = "Convolution";
+    var dropdown = new List<SelectListItem>();
+    dropdown.Add(new SelectListItem() { Text = "3x3", Value = "3", Selected = true });
+    dropdown.Add(new SelectListItem() { Text = "5x5", Value = "5", Selected = false });
+    dropdown.Add(new SelectListItem() { Text = "7x7", Value = "7", Selected = false });
+    dropdown.Add(new SelectListItem() { Text = "9x9", Value = "9", Selected = false });
+    ViewBag.Kernels = new SelectList(dropdown, "Value", "Text");
+}
+
+@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+@Html.Hidden("BlogPostName", Model.BlogPost.ToString())
+<main role="main-inner-wrapper" class="container">
+    <div class="blog-details">
+        <article class="post-details" id="post-details">
+            <header role="bog-header" class="bog-header text-center">
+                <h3><span>19</span> November 2018</h3>
+                <h2>
+                    A guide in how to perfrom convolution on an image with a working Javascript example
+                </h2>
+                <a class="proj-url" href="https://github.com/msharp19/MyPortfolio/tree/master/PortfolioSite/ImageProcessor">Git URL<i class="fa fa-external-link" aria-hidden="true"></i></a>
+            </header>
+            <figure>
+                <a href="../images/blog-main-images/cnn.jpg">
+                    <img src="../images/blog-main-images/conv.jpg" alt="" class="img-responsive auto-margin" />
+                </a>
+            </figure>
+            <div class="enter-content">
+                <h2>Introduction</h2>
+                <p>Convolution is used in image processing.</p>
+
+                <h2>Code (Javascript)</h2>
+                <p>The code below is a snippet of the code used to run the example below. It takes a mask and performs operations across each pixel in an input image. For ease of image manipulation I have used the MarvinJ.js library found <a href="http://www.marvinj.org/en/index.html">here</a></p>
+                <figure class="">
+                    <div class="">
+                        @Html.Partial("_ConvolutionJsMethods")
+                    </div>
+                </figure>
+
+                <h2>Example</h2>
+                <p>1. Select parameters below to perform convolution.</p>
+                <div class="conv-radio">
+                    <div class="middle">
+                        @Html.DropDownList("Kernels")
+                    </div>
+                </div>
+                @{
+                    var hide = string.Empty;
+                    var row = string.Empty;
+                    var column = string.Empty;
+                }
+                <table id="input_table" class="kernal-table">
+                    @for (int i = 1; i < 10; i++)
+                    {
+                        row = $"r-{i}";
+                        <tr class="@row">
+                            @for (int j = 1; j < 10; j++)
+                            {
+                                hide = ((i > 3) || (j > 3)) ? "display:none;" : "";
+                                column = $"c-{j}";
+                                <td class="@column" style="@hide">
+                                    @{var nameId = $"kernal-value-{i}-{j}"; }
+                                    @Html.TextBox(nameId, "0", null, new { @id = nameId, @class = "kernal-tb" })
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+
+                <p>2. Select image</p>
+                <figure class="">
+                    <div class="thumb-box">
+                        <div class="thumbs">
+                            <div><a href="#1" data-slide="1"><img src="../images/convolution/building-2.jpg" alt="Selected" class="display-image"></a></div>
+                            <div><a href="#2" data-slide="2"><img src="../images/convolution/cat.jpg" alt="Selected" class="display-image"></a></div>
+                            <div><a href="#3" data-slide="3"><img src="../images/convolution/bike.jpg" alt="Selected" class="display-image"></a></div>
+                            <div><a href="#4" data-slide="4"><img src="../images/convolution/rose.jpg" alt="Selected"></a></div>
+                        </div>
+                    </div>
+                </figure>
+                <figure>
+                    <ul id="thumbnails">
+                        <li>
+                            <a href="#slide1">
+                                <img src="../images/convolution/building-2.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#slide2">
+                                <img src="../images/convolution/cat.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#slide3">
+                                <img src="../images/convolution/bike.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#slide4">
+                                <img src="../images/convolution/rose.jpg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </figure>
+
+                </br>
+                <p>3. Run Convolution</p>
+                <div class="run-convolution commentys-form">
+                    <canvas id="outputCanvas" class="inline" width="800" height="500" style="display:none"></canvas>
+                    <div class="text-center-no-flex">
+                        <input name="" id="run-convolution-btn" type="button" value="Run">
+                    </div>
+                </div>
+
+</article>
+        @Html.Partial("_Comments", Model.CommentModel)
+    </div>
+</main>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+@Scripts.Render("~/Scripts/slippry.min.js")
+<script>hljs.initHighlightingOnLoad();</script>
+@Scripts.Render("~/Scripts/convolution.js")
+@Scripts.Render("~/Scripts/code-block.js")
+
+

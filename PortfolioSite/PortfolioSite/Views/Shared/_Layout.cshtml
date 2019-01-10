@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Matt Sharps Portfolio</title>
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     @Styles.Render("~/Content/style.css")
     @Styles.Render("~/Content/bootstrap.min.css")
     @Styles.Render("~/Content/responsive.css")
@@ -15,8 +16,8 @@
     @Styles.Render("~/Content/component.css")
     @Styles.Render("~/Content/toastr.css")
     @Styles.Render("~/Content/Site.css")
-    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    @Styles.Render("~/Content/slippry.css")
+    <link rel="shortcut icon" href="../images/logo-1.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -74,6 +75,8 @@
     @Scripts.Render("~/Scripts/js/layout.js")
     @Scripts.Render("~/Scripts/js/toastr.min.js")
     @Scripts.Render("~/Scripts/layout.js")
+    @Scripts.Render("~/Scripts/slippry.min.js")
+    @Scripts.Render("~/Scripts/marvinj.min.js")
     @RenderSection("scripts", required: false)
     <script type="text/javascript" id="cookieinfo"
             src="//cookieinfoscript.com/js/cookieinfo.min.js">
